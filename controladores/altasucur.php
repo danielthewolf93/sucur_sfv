@@ -76,7 +76,12 @@ $result = $sentencia2->fetch();
 if ($result!=null) {
 	
 	echo "<script>alert('Sucursal ya ingresada.Por favor ingrese otra')</script>";
-	die();
+    
+        
+	header("refresh:0;../index.php") ;
+    die();
+    //exit();
+    
 }
 
 
