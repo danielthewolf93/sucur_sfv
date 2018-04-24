@@ -12,6 +12,10 @@
 
 
 
+
+
+
+
 <form name="datos_bas" id="datos_bas">
 	
 
@@ -23,9 +27,54 @@
 
 </form>
 
+
+
+<table class="table table-striped table-hover">
+                    
+                    <tr>
+                      <th>Id Sucursal</th>
+                      <th>Calle</th>
+                      <th>Nro Calle</th>
+                      <th>Sucurs Tipo</th>
+                      <th></th>
+                    </tr>
+                    <?php foreach ($resultado as $result ) { ?>
+                    <tr>
+                      <td><?php echo $result['id_sucursal']; ?></td>
+                      <td><?php echo $result['calle']; ?></td>
+                      <td><?php echo $result['nro_calle']; ?></td>
+                      <td><?php echo $result['sucurs_princip']; ?></td>
+                      <!--<td><a class="btn btn-success" href="../controladores/revsolicitud1.php?id=<?php echo $result['cod_solicitud']; ?>" target="_blank">Ver +</a> </td>-->
+                      <td><button value="mod" id="bot_mod" onclick="mostrar_mod()">Modificar Suc</button></td>
+                      
+                      <!--
+                      <td><button  id="bot_baja" onclick="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>">Borrar Suc</button></td>
+					  -->
+
+                      <td><a class="btn btn-success" href="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>" >Borrar</a>
+                      	
+                      </td>
+
+                    </tr>
+                    <?php } ?>
+
+                    <?php if ($resultado != null) {?>
+
+                    <td><button value="alta" id="bot_alta" onclick="mostrar_alta()">Agregar Suc</button></td>
+                	
+                	<?php   }  ?> 
+          
+</table>
+
+
+<!--
+
+
 	<button value="alta" id="bot_alta" onclick="mostrar_alta()">Agregar Suc</button>
 	<button value="mod" id="bot_mod" onclick="mostrar_mod()">Modificar Suc</button>
 	<button value="baja" id="bot_baja" onclick="mostrar_baja()">Borrar Suc</button>
+
+-->
 
 <div id="agreg_suc" style="display:none">
 

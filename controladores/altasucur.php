@@ -234,8 +234,8 @@ returns array(
 
    */
 
+header('Location:../index.php') ;
 
-
-	include('../vistas/vista_suc_tramites.html');
+	//include('../vistas/vista_suc_tramites.html');
 
 ?>
