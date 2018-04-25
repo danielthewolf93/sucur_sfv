@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sucursal/Modificacion</title>
+</head>
+<body>
+
+
+<form name="datos_bas" id="datos_bas">
+	
+
+<fieldset>Datos Contribuyente-Modificar Sucursal</fieldset>
+	<label for="cuit">Cuit Contribuyente</label>
+	<input type="number" name="cuit" id="cuit" value="2037462532" placeholder="20374625323" disabled>
+	<label for="nro_ins">Nro Inscripcion</label>
+	<input type="number" name="nro_ins" id="nro_ins"  value="2037462532" disabled>
+
+</form>
+
+
+
+<form onsubmit="return validar1()"   action="../controladores/modif_suc.php" method="GET" name="modif_suc" >
+
+			<label for="id_sucurs" style ="display: none">Id Sucursal</label>
+			<input type="number" name="id_sucurs" id="id_sucurs" placeholder="<?php echo $id_suc; ?>" style ="display: none">
+			
+			<input type="number" name="cuit" id="cuit" value="2037462532" placeholder="20374625323" style="display:none">
+			<input type="number" name="nro_ins" id="nro_ins"  value="2037462532"  style="display:none" >
+			<label for="calle_id">Calle</label>
+			<input type="number" name="calle_id" id="calle_id" placeholder="<?php echo $calle; ?>" required>
+
+			<label for="calle_alt">Altura Calle</label>
+			<input type="number" name="calle_alt" id="calle_alt" placeholder="<?php echo $altura; ?>" required>
+
+			
+
+			<label for="sucurs_princ">Sucursal Principal</label>
+			<input type="number" name="suc_vista" id="suc_vista" placeholder="<?php echo $sucurs_princ; ?>" disabled>
+			<select name="sucurs_princ" id="sucurs_princ" >
+				<option disabled selected >Opcion ingresada anteriormente: <?php echo $sucurs_princ; ?> </option>
+				<option value="si">Si</option>
+				<option value="no">No</option>
+			</select>
+
+			<button id="alta2" type="submit">Modificar</button>
+
+
+	</form>
+
+
+<a class="btn btn-success" href="../index.php" >Cancelar</a>
+
+
+
+
+</body>
+</html>

@@ -19,7 +19,7 @@
 <form name="datos_bas" id="datos_bas">
 	
 
-<fieldset>Datos Contribuyente</fieldset>
+<fieldset>Datos Contribuyente-Sucursales</fieldset>
 	<label for="cuit">Cuit Contribuyente</label>
 	<input type="number" name="cuit" id="cuit" value="2037462532" placeholder="20374625323" disabled>
 	<label for="nro_ins">Nro Inscripcion</label>
@@ -47,9 +47,17 @@
 
                       
                       <!--<td><a class="btn btn-success" href="../controladores/revsolicitud1.php?id=<?php echo $result['cod_solicitud']; ?>" target="_blank">Ver +</a> </td>-->
-                      <td><button value="mod" id="bot_mod" onclick="mostrar_mod()">Modificar Suc</button></td>
-                      
 
+
+
+                     <!-- <td><button value="mod" id="bot_mod" onclick="mostrar_mod()">Modificar Suc</button></td>     -->
+
+
+
+                      
+                       <td><a class="btn btn-success" href="controladores/mostrar_mod.php?id=<?php echo $result['id_sucursal']; ?>" >Modificar</a>
+                      	
+                      </td>
 
 
                       <!--
