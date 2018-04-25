@@ -32,20 +32,22 @@ if (mysqli_connect_errno()) {
 
 
 
+//Si ingresa los mismos datos de otra sucursal ya cargada.controla.
 
 
 
 
-$consulta2 = "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND calle=? AND nro_calle=?";
+$consulta2 = "SELECT * FROM rm_sucursales WHERE  calle=? AND nro_calle=? AND id_sucursal!=? ";
 
 $sentencia2 = $mysqli->prepare($consulta2);
 
 $sentencia2->bind_param("sss", $val1, $val2, $val3);
 
 
-$val1 = $cuit_cont;
-$val2 = $calle;
-$val3 = $nr_calle;
+
+$val1 = $calle;
+$val2 = $nro_calle;
+$val3 = $id;
 
 $sentencia2->execute();
 
@@ -70,6 +72,35 @@ if ($result!=null) {
 
 
 
+$consulta4 = "UPDATE  rm_sucursales SET calle =?, nro_calle =?, sucurs_princip =?  WHERE id_sucursal=? ";
+
+
+$sentencia33 = $mysqli->prepare($consulta4);
+
+$sentencia33->bind_param("ssss", $val5, $val6, $val7, $val8);
+
+
+
+$val5 = $calle;
+$val6 = $nro_calle;
+$val7 = $suc_princ;
+$val8 = $id;
+
+$sentencia33->execute();
+
+
+
+
+
+//Funciona sola
+//$resultado = $mysqli->query($consulta4);
+
+
+echo "<script>alert('Sucursal Modificada.')</script>";
+
+
+
+header("refresh:0;../index.php") ;
 
 
 
@@ -84,19 +115,24 @@ if ($result!=null) {
 
 
 
+/*
 
 
-$consulta1 = "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND nro_inscripc=? AND sucurs_princip=?" ;
+//Si ya existe una sucursal cargada como sucursal principal.controla.
+
+//
+
+$consulta2 = "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND nro_inscripc=? AND sucurs_princip=?" ;
 
 
-$sentencia2 = $mysqli->prepare($consulta1);
+$sentencia2 = $mysqli->prepare($consulta2);
 
-$sentencia2->bind_param("sss", $val1, $val2, $val3);
+$sentencia2->bind_param("sss", $val11, $val22, $val33);
 
 
-$val1 = $cuit;
-$val2 = $nro_ins;
-$val3 = $$suc_resp;
+$val11 = $cuit;
+$val22 = $nro_ins;
+$val33 = $suc_resp;
 
 
 $sentencia2->execute();
@@ -112,8 +148,9 @@ if (($result!=null)&&($suc_princ=='si')) {
 	
 	echo "<script>alert('Error de Modificacion.Ya existe una sucursal Principal.')</script>";
     
-        
-	header("refresh:0;mostrar_mod.php?id=$id") ;
+    header("refresh:0;../index.php");    
+
+	// header("refresh:0;mostrar_mod.php?id=$id") ;
     die();
     //exit();
     
@@ -162,6 +199,6 @@ header("refresh:0;../index.php") ;
 
 
 
-
+*/
 
 ?>
