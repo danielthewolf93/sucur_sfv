@@ -57,25 +57,25 @@ $consulta2 = "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND calle=? AND nro
 
 $sentencia2 = $mysqli->prepare($consulta2);
 
-$sentencia2->bind_param("sss", $val11, $val22, $val33);
+$sentencia2->bind_param("sss", $val1, $val2, $val3);
 
 
-$val11 = $cuit_cont;
-$val22 = $calle;
-$val33 = $nr_calle;
+$val1 = $cuit_cont;
+$val2 = $calle;
+$val3 = $nr_calle;
 
 $sentencia2->execute();
 
 $sentencia2->store_result();
 
 
-$sentencia2->bind_result( $cuit_cont , $calle , $nr_calle);
+//$sentencia2->bind_result( $cuit_cont , $calle , $nr_calle);
 $result = $sentencia2->fetch();
 
 
 if ($result!=null) {
 	
-	echo "<script>alert('Sucursal ya ingresada.Por favor ingrese otra')</script>";
+	echo "<script>alert('Sucursal ya ingresada.Por favor ingrese otra.')</script>";
     
         
 	header("refresh:0;../index.php") ;
@@ -85,9 +85,44 @@ if ($result!=null) {
 }
 
 
+$consulta3 = "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND sucurs_princip=? ";
+
+$sentencia3 = $mysqli->prepare($consulta3);
+
+$sentencia3->bind_param("ss", $val12, $val22);
+
+
+$val12 = $cuit_cont;
+$val22 = 'si';
+
+
+$sentencia3->execute();
+
+$sentencia3->store_result();
+
+
+//$sentencia3->bind_result( $cuit_cont , $sucurs_princ);
+$result2 = $sentencia3->fetch();
+
+
+if (($result2!=null)&&($sucurs_princ=='si')) {
+
+    echo "<script>alert('Sucursal principal ya ingresada.No puede tener ma&cuote; de una Principal.')</script>";
+    header("refresh:0;../index.php") ;
+    die();
+    # code...
+}
+
+
 //$mysqli->query("CREATE TABLE myCity LIKE City");
 
 /* Preparar una sentencia INSERT */
+
+
+
+
+
+
 $consulta = "INSERT INTO rm_sucursales (id_sucursal,cuit_contr,nro_inscripc,calle,nro_calle,barrio,fecha_generac,sucurs_princip) VALUES (null,?,?,?,?,?,?,?)";
 
 $sentencia = $mysqli->prepare($consulta);
@@ -239,7 +274,10 @@ returns array(
 
    */
 
-header('Location:../index.php') ;
+    header('Location:../index.php') ;
+
+
+
 
 	//include('../vistas/vista_suc_tramites.html');
 
