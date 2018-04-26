@@ -22,6 +22,9 @@ $suc_resp='si';
 
 //conexion a la Base de Datos//reemplazar por un archivo funciones_basicas.php asi llamarlo.
 //------------------------------------------------------------
+
+
+
 $mysqli = new mysqli("localhost", "root", "", "rentascf");
 
 /* comprobar la conexión */
@@ -29,11 +32,6 @@ if (mysqli_connect_errno()) {
     printf("Falló la conexión: %s\n", mysqli_connect_error());
     exit();
 }
-
-
-
-//Si ingresa los mismos datos de otra sucursal ya cargada.controla.
-
 
 
 
@@ -59,17 +57,43 @@ $result = $sentencia2->fetch();
 
 
 if ($result!=null) {
-	
-	echo "<script>alert('No se puede modificar.Existe una sucursal con esos datos')</script>";
+    
+    echo "<script>alert('No se puede modificar.Existe una sucursal con esos datos')</script>";
     
         
-	header("refresh:0;../index.php") ;
+    header("refresh:0;../index.php") ;
     die();
     //exit();
     
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Si ingresa los mismos datos de otra sucursal ya cargada.controla.
 
 
 $consulta4 = "UPDATE  rm_sucursales SET calle =?, nro_calle =?, sucurs_princip =?  WHERE id_sucursal=? ";
@@ -86,9 +110,54 @@ $val6 = $nro_calle;
 $val7 = $suc_princ;
 $val8 = $id;
 
+
+
 $sentencia33->execute();
+$sentencia33->store_result();
+
+echo "<script>alert('Sucursal Modificada.')</script>";
 
 
+
+header("refresh:0;../index.php") ;
+
+
+
+
+
+
+
+
+
+
+//$consulta4 = "UPDATE rm_sucursales SET calle = $calle, nro_calle = $nro_calle, sucurs_princip = $suc_princ  WHERE id_sucursal=$id";
+
+//UPDATE `rentascf`.`rm_sucursales` SET `nro_calle` = '99' WHERE `rm_sucursales`.`id_sucursal` = 44;
+
+
+//$resultado = $mysqli->query($consulta4);
+
+
+/*
+$consulta4 = "UPDATE  rm_sucursales SET calle =?, nro_calle =?, sucurs_princip =?  WHERE id_sucursal=? ";
+
+
+$sentencia33 = $mysqli->prepare($consulta4);
+
+$sentencia33->bind_param("sssi", $val5, $val6, $val7, $val8);
+
+
+
+$val5 = $calle;
+$val6 = $nro_calle;
+$val7 = $suc_princ;
+$val8 = $id;
+
+
+
+$sentencia33->execute();
+$sentencia33->store_result();
+*/
 
 
 
@@ -96,11 +165,6 @@ $sentencia33->execute();
 //$resultado = $mysqli->query($consulta4);
 
 
-echo "<script>alert('Sucursal Modificada.')</script>";
-
-
-
-header("refresh:0;../index.php") ;
 
 
 

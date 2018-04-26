@@ -22,7 +22,7 @@
 <form onsubmit="return validar1()"   action="../controladores/modif_suc.php" method="GET" name="modif_suc" >
 
 			<label for="id_sucurs" style ="display: none">Id Sucursal</label>
-			<input type="number" name="id_sucurs" id="id_sucurs" placeholder="<?php echo $id_suc; ?>" style ="display: none">
+			<input type="number" name="id_sucurs" id="id_sucurs" value="<?php echo $id_suc; ?>" style ="display: none">
 			
 			<input type="number" name="cuit" id="cuit" value="2037462532" placeholder="20374625323" style="display:none">
 			<input type="number" name="nro_ins" id="nro_ins"  value="2037462532"  style="display:none" >
@@ -36,7 +36,7 @@
 
 			<label for="sucurs_princ">Sucursal Principal</label>
 			<input type="number" name="suc_vista" id="suc_vista" placeholder="<?php echo $sucurs_princ; ?>" disabled>
-			<select name="sucurs_princ" id="sucurs_princ" >
+			<select name="sucurs_princ" id="sucurs_princ" required>
 				<option disabled selected >Opcion ingresada anteriormente: <?php echo $sucurs_princ; ?> </option>
 				<option value="si">Si</option>
 				<option value="no">No</option>
@@ -45,7 +45,7 @@
 			<button id="alta2" type="submit">Modificar</button>
 
 
-	</form>
+</form>
 
 
 <a class="btn btn-success" href="../index.php" >Cancelar</a>
