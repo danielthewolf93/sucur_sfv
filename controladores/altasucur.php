@@ -1,6 +1,6 @@
 <?php
 
-
+date_default_timezone_set('America/Argentina/Catamarca');
 /*
 $link = mysqli_connect("localhost", "root", "", "rentascf");
 
@@ -30,7 +30,7 @@ $error='';
 
 
 */
-date_default_timezone_set('America/Argentina/Catamarca');
+
 $cuit_cont=$_GET['cuit'];
 $nr_insc=$_GET['nro_ins'];
 $calle=$_GET['calle_id'];
@@ -38,13 +38,12 @@ $nr_calle=$_GET['calle_alt'];
 $barrio='none';
 
 //$fecha=getdate();
+
 $fecha = date('Y-m-d');
 
 $sucurs_princ=$_GET['sucurs_princ'];
 
 $tramite_tipo='alta';
-
-
 
 
 $mysqli = new mysqli("localhost", "root", "", "rentascf");
@@ -150,32 +149,30 @@ $sentencia->execute();
 
 
 
-//Alta sucursal-Mov.
+//Alta sucursal-Mov-----------------------------------------------------------//
 
 
-//Buscamos la sucursal ingresada recientemente
+//
 
-$consulta28 = "SELECT * FROM rm_sucursales WHERE  calle=? AND nro_calle=?";
-
-$sentencia28 = $mysqli->prepare($consulta28);
-
-$sentencia28->bind_param("ss", $val28, $val38);
+$consulta3 = "SELECT * FROM rm_sucursales WHERE calle=$calle AND nro_calle=$nr_calle ";
 
 
-$val28 = $calle;
-$val38 = $nr_calle;
 
-$sentencia28->execute();
-
-$sentencia28->store_result();
+//Funciona sola
+$resultadoz = $mysqli->query($consulta3);
 
 
-//$sentencia28->bind_result($id_sucursal);
-
-$result8 = $sentencia28->fetch();
 
 
-$id_sucu=$result8['id_sucursal'];
+foreach ($resultadoz as $resz ) {
+
+  $id_sucu=$resz['id_sucursal'];
+
+}
+
+
+
+
 
 /*
 foreach ($result8 as $var8) {
@@ -198,7 +195,7 @@ foreach ($result8 as $var8) {
 
 
 
-//---------------------------------------------//
+//-----------------------------------------------------------------------------//
 
 
 
