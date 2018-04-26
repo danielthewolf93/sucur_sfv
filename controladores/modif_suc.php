@@ -179,7 +179,7 @@ $consultamov = "INSERT INTO rm_sucursales_mov (id_sucursal_mov,tramite_tipo,fech
 
 $sentenciamov = $mysqli->prepare($consultamov);
 
-$sentencias->bind_param("ssss", $val15, $val25, $val35, $val45);
+$sentenciamov->bind_param("ssss", $val15, $val25, $val35, $val45);
 
 $val15 = $tramite_tipo;
 $val25 = $fecha;
@@ -187,7 +187,7 @@ $val35 = $cuit;
 $val45 = $id;
 
 
-$sentencias->execute();
+$sentenciamov->execute();
 
 
 

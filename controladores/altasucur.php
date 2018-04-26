@@ -122,9 +122,7 @@ if (($result2!=null)&&($sucurs_princ=='si')) {
 }
 
 
-//$mysqli->query("CREATE TABLE myCity LIKE City");
 
-/* Preparar una sentencia INSERT */
 
 
 
@@ -155,19 +153,67 @@ $sentencia->execute();
 //Alta sucursal-Mov.
 
 
+//Buscamos la sucursal ingresada recientemente
+
+$consulta28 = "SELECT * FROM rm_sucursales WHERE  calle=? AND nro_calle=?";
+
+$sentencia28 = $mysqli->prepare($consulta28);
+
+$sentencia28->bind_param("ss", $val28, $val38);
+
+
+$val28 = $calle;
+$val38 = $nr_calle;
+
+$sentencia28->execute();
+
+$sentencia28->store_result();
+
+
+//$sentencia28->bind_result($id_sucursal);
+
+$result8 = $sentencia28->fetch();
+
+
+$id_sucu=$result8['id_sucursal'];
+
+/*
+foreach ($result8 as $var8) {
+    
+    $id_sucu=$var8['id_sucursal'];
+
+    # code...
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------//
+
+
 
 $consultamov = "INSERT INTO rm_sucursales_mov (id_sucursal_mov,tramite_tipo,fecha_tramite,cuit_contrib,id_sucursal) VALUES (null,?,?,?,?)";
 
 $sentenciamov = $mysqli->prepare($consultamov);
 
-$sentencias->bind_param("ssss", $val15, $val25, $val35, $val45);
+$sentenciamov->bind_param("ssss", $val15, $val25, $val35, $val45);
 
 $val15 = $tramite_tipo;
 $val25 = $fecha;
 $val35 = $cuit_cont;
-$val45 = $nr_calle;
+$val45 = $id_sucu;
 
-$sentencias->execute();
+$sentenciamov->execute();
 
 
 
