@@ -53,14 +53,17 @@ if (mysqli_connect_errno()) {
 }
 
 
-$consulta2 = "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND calle=? AND nro_calle=?";
+//controlamos que esa sucursal no este ingresada por otra cuenta por lo tanto sacamos $cuit_contr
+
+
+
+$consulta2 = "SELECT * FROM rm_sucursales WHERE  calle=? AND nro_calle=?";
 
 $sentencia2 = $mysqli->prepare($consulta2);
 
-$sentencia2->bind_param("sss", $val1, $val2, $val3);
+$sentencia2->bind_param("ss", $val2, $val3);
 
 
-$val1 = $cuit_cont;
 $val2 = $calle;
 $val3 = $nr_calle;
 
@@ -84,6 +87,8 @@ if ($result!=null) {
     
 }
 
+
+//controlamos que no tenga +1 sucursal principal por contribuyente
 
 $consulta3 = "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND sucurs_princip=? ";
 
@@ -120,7 +125,7 @@ if (($result2!=null)&&($sucurs_princ=='si')) {
 
 
 
-
+//Si no tiene ningun error creamos la sucursal.
 
 
 $consulta = "INSERT INTO rm_sucursales (id_sucursal,cuit_contr,nro_inscripc,calle,nro_calle,barrio,fecha_generac,sucurs_princip) VALUES (null,?,?,?,?,?,?,?)";
