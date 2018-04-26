@@ -33,6 +33,8 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
+//controlamos si existe cualquier otra sucursal con estos datos ya ingresados.
+
 
 
 $consulta2 = "SELECT * FROM rm_sucursales WHERE  calle=? AND nro_calle=? AND id_sucursal!=? ";
@@ -66,6 +68,49 @@ if ($result!=null) {
     //exit();
     
 }
+
+
+
+//controlamos si existe una sucursal principal para el mismo contribuyente
+
+
+$consulta3 = "SELECT * FROM rm_sucursales WHERE  cuit_contr=? AND nro_inscripc=? AND sucurs_princip=? ";
+
+$sentencia3 = $mysqli->prepare($consulta3);
+
+$sentencia3->bind_param("sss", $val13, $val23, $val33);
+
+
+
+$val13 = $cuit;
+$val23 = $nro_ins;
+$val33 = $suc_resp;
+
+$sentencia3->execute();
+
+$sentencia3->store_result();
+
+
+//$sentencia2->bind_result( $cuit_cont , $calle , $nr_calle);
+$result34 = $sentencia3->fetch();
+
+
+if ($result34!=null&&($suc_princ=='si')) {
+    
+    echo "<script>alert('Error.Ya existe una sucursal principal para $cuit')</script>";
+    
+        
+    header("refresh:0;../index.php") ;
+    die();
+    //exit();
+    
+}
+
+
+
+
+
+
 
 
 
