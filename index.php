@@ -23,7 +23,7 @@ if (mysqli_connect_errno()) {
 $prueba_cont=2037462532;
 
 
-$consulta3 = "SELECT id_sucursal,calle,nro_calle,sucurs_princip FROM rm_sucursales WHERE cuit_contr=$prueba_cont ";
+$consulta3 = "SELECT * FROM rm_sucursales WHERE cuit_contr=$prueba_cont ";
 
 
 

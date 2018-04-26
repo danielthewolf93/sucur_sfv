@@ -64,7 +64,7 @@
                       <td><button  id="bot_baja" onclick="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>">Borrar Suc</button></td>
 					  -->
 
-                      <td><a class="btn btn-success" href="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>" >Borrar</a>
+                      <td><a class="btn btn-success" href="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>&cuit=<?php echo $result['cuit_contr'] ; ?>" >Borrar</a>
                       	
                       </td>
 

@@ -42,6 +42,9 @@ $fecha = date('Y-m-d');
 
 $sucurs_princ=$_GET['sucurs_princ'];
 
+$tramite_tipo='alta';
+
+
 
 
 $mysqli = new mysqli("localhost", "root", "", "rentascf");
@@ -141,10 +144,36 @@ $val4 = $nr_calle;
 $val5 = $barrio;
 $val6 = $fecha;
 $val7 = $sucurs_princ;
+
+
 /* Ejecutar la sentencia */
 $sentencia->execute();
 
+
+
+
+//Alta sucursal-Mov.
+
+
+
+$consultamov = "INSERT INTO rm_sucursales_mov (id_sucursal_mov,tramite_tipo,fecha_tramite,cuit_contrib,id_sucursal) VALUES (null,?,?,?,?)";
+
+$sentenciamov = $mysqli->prepare($consultamov);
+
+$sentencias->bind_param("ssss", $val15, $val25, $val35, $val45);
+
+$val15 = $tramite_tipo;
+$val25 = $fecha;
+$val35 = $cuit_cont;
+$val45 = $nr_calle;
+
+$sentencias->execute();
+
+
+
 echo "<script>alert('Sucursal creada con exito')</script>";
+
+
 
 //$bd = new conex('localhost', 'root', '', 'rentascf');
 

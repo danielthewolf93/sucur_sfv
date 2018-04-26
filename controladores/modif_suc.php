@@ -20,6 +20,17 @@ $suc_princ=$_GET['sucurs_princ'];
 
 $suc_resp='si';
 
+
+
+
+//Datos para mov.Borrar
+date_default_timezone_set('America/Argentina/Catamarca');
+$fecha = date('Y-m-d');
+$tramite_tipo='mod';
+
+
+//
+
 //conexion a la Base de Datos//reemplazar por un archivo funciones_basicas.php asi llamarlo.
 //------------------------------------------------------------
 
@@ -159,6 +170,41 @@ $val8 = $id;
 
 $sentencia33->execute();
 $sentencia33->store_result();
+
+
+
+//Baja sucursal-Mov.
+
+$consultamov = "INSERT INTO rm_sucursales_mov (id_sucursal_mov,tramite_tipo,fecha_tramite,cuit_contrib,id_sucursal) VALUES (null,?,?,?,?)";
+
+$sentenciamov = $mysqli->prepare($consultamov);
+
+$sentencias->bind_param("ssss", $val15, $val25, $val35, $val45);
+
+$val15 = $tramite_tipo;
+$val25 = $fecha;
+$val35 = $cuit;
+$val45 = $id;
+
+
+$sentencias->execute();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 echo "<script>alert('Sucursal Modificada.')</script>";
 
