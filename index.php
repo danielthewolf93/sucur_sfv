@@ -20,17 +20,28 @@ if (mysqli_connect_errno()) {
 
 
 
+
+
+
+
 $prueba_cont=2037462532;
 
 
 $consulta3 = "SELECT * FROM rm_sucursales WHERE cuit_contr=$prueba_cont ";
 
 
+$resultado = $mysqli->query($consulta3);
+
+//Esto es calles prediccion prueba
+
+
 
 
 
 //Funciona sola
-$resultado = $mysqli->query($consulta3);
+
+
+
 
 
 

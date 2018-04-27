@@ -20,7 +20,7 @@ $(document).ready(function(){
                     dataType: "html",
                     beforeSend: function(){
                           //imagen de carga
-                          $("#resultado").html("<p align='center'><img src='ajax-loader.gif' /></p>");
+                          $("#resultado").html("<p align='center'><img src='ajax_loader.gif' /></p>");
                     },
                     error: function(){
                           alert("error petición ajax");

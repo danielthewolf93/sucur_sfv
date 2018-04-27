@@ -21,27 +21,29 @@
 				}
 
 
-				$consulta = "SELECT * FROM rm_sucursales_calles WHERE  calle LIKE '%".?."%'";
-				
-				$sentenciamov = $mysqli->prepare($consulta);
+				$query = "SELECT * FROM rm_sucursales_calles WHERE  nombre_calle LIKE '%".$b."%'";
+				$result = $mysqli->query($query);
 
-				$sentenciamov->bind_param("s", $val1);
-
-				$val1 = $b;
+				$numfilas = $result->num_rows;
 
 
-				$sentenciamov->execute();
 
-				$contar = mysql_num_rows($consulta);
 
-				if($contar == 0){
+
+
+
+
+
+				if($numfilas == 0){
                   echo "No se han encontrado resultados para '<b>".$b."</b>'.";
 		            }else{	
-		                  while($row=mysql_fetch_array($sql)){
-		                        $nombre = $row['nombre'];
-		                        $id = $row['id'];
+		            	//echo "Sugerencias"."</br>";
+		                  foreach ($result as $res ) {
+		                  	
+		                        $nombre = $res['nombre_calle'];
+		                        $id = $res['cod_calle'];
 		                         
-		                        echo $id." - ".$nombre."<br /><br />";    
+		                        echo $nombre."<br /><br />";    
 		                  									}
 		            	}
 		  }

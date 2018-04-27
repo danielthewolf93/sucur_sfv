@@ -28,7 +28,6 @@
 </form>
 
 
-
 <table class="table table-striped table-hover">
                     
                     <tr>
@@ -101,6 +100,14 @@
 			
 			<!--Agregar AJAX , JQuery para las calles identificacion ***********************-->
 
+			<label for="calle_search">Calle Nombre</label>
+
+			<input type="text" name="calle_search"  id="busqueda">
+
+			<div id="resultado"></div>
+
+			<!--****************************************************************************-->
+
 			<label for="calle_id">Calle</label>
 			<input type="number" name="calle_id" id="calle_id" required>
 
@@ -155,6 +162,11 @@
 
 
 <script type="text/javascript" src="js/contr_sucurs.js"></script>
+
+<script type="text/javascript" src="js/jquery_3_3_1_min.js"></script>
+
+<script type="text/javascript" src="js/busqueda_calles.js"></script>
+
 
 
 </body>
