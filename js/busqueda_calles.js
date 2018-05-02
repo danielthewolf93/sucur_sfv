@@ -31,10 +31,17 @@ $(document).ready(function(){
                         //---------------------------------
                        // $("#filtro").html(data);
                        // $("#busqueda").val(consulta);
-                        //---------------------------------                                                 
+                        //---------------------------------            
+
+                          
                           $("#resultado").empty();
+
                           $("#resultado").append(data);
-                                                             
+
+                          
+                         
+
+
                     }
               });
                                                                                   
@@ -42,3 +49,4 @@ $(document).ready(function(){
         });
                                                                    
 });
+

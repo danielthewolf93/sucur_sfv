@@ -7,6 +7,7 @@
 
 
 
+
 </head>
 <body>
 
@@ -130,14 +131,74 @@ null o 0 ? .
 
 			<input type="text" name="calle_search"  id="busqueda">
 
-			<div id="resultado"></div>
+			<div id="resultado" >
+			</div>
+
+
+
+
+			<!--****************************************************************************-->
+
+					<div id='content'>
+			        <script type="text/javascript">
+			            $(document).ready(function () {
+			                
+			                var url = "../sampledata/customers.txt";
+			                // prepare the data
+			                var source =
+			                {
+			                    datatype: "json",
+			                    datafields: [
+			                        { name: 'CompanyName' },
+			                        { name: 'ContactName' }
+			                    ],
+			                    url: url
+			                };
+			                var dataAdapter = new $.jqx.dataAdapter(source);
+			                // Create a jqxInput
+			                $("#jqxInput").jqxInput({ source: dataAdapter, placeHolder: "Contact Name:", displayMember: "ContactName", valueMember: "CompanyName", width: 200, height: 25});
+			                $("#jqxInput").on('select', function (event) {
+			                    if (event.args) {
+			                        var item = event.args.item;
+			                        if (item) {
+			                            var valueelement = $("<div></div>");
+			                            valueelement.text("Value: " + item.value);
+			                            var labelelement = $("<div></div>");
+			                            labelelement.text("Label: " + item.label);
+			                            $("#selectionlog").children().remove();
+			                            $("#selectionlog").append(labelelement);
+			                            $("#selectionlog").append(valueelement);
+			                        }
+			                    }
+			                });
+			            });
+			        </script>
+			        <input id="jqxInput" />
+			        <br />
+			        <label style="font-family: Verdana; font-size: 10px;">ex: Ana</label>
+			         <div style="font-family: Verdana; font-size: 13px;" id='selectionlog'>
+			        </div>
+			  		</div>
+
+
+
+
+
+
+
+
+
+			
+
+
+			
 
 			<!--****************************************************************************-->
 
 			<label for="calle_id">Calle</label>
 			<input type="number" name="calle_id" id="calle_id" required>
 
-			<!--****************************************************************************-->
+
 
 			<label for="calle_alt">Altura Calle</label>
 			<input type="number" name="calle_alt" id="calle_alt" required>

@@ -39,11 +39,12 @@
 		            }else{	
 		            	//echo "Sugerencias"."</br>";
 		                  foreach ($result as $res ) {
-		                  	
+		                  
 		                        $nombre = $res['nombre_calle'];
 		                        $id = $res['cod_calle'];
-		                         
-		                        echo $nombre."<br /><br />";    
+		                      	
+		                        echo "<li>".$nombre."<br /><br />"."</li>"; 
+		                           
 		                  									}
 		            	}
 		  }
