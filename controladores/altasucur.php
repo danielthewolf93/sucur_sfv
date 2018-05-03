@@ -93,7 +93,7 @@ $result2 = $sentencia3->fetch();
 
 if (($result2!=null)&&($sucurs_princ=='si')) {
 
-    echo "<script>alert('Sucursal principal ya ingresada.No puede tener ma&cuote; de una Principal.')</script>";
+    echo "<script>alert('Sucursal principal ya ingresada.No puede tener mas de una Sucursal Principal.')</script>";
     header("refresh:0;../index.php") ;
     die();
     # code...
@@ -187,13 +187,7 @@ if ($result!=null) {
 
 
 
-
 //--------------------------------------------------------
-
-
-
-
-
 
 
 

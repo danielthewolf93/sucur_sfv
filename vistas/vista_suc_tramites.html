@@ -42,15 +42,23 @@
                     <?php foreach ($resultado as $result ) { ?>
                     <tr>
                       <td><?php echo $result['id_sucursal']; ?></td>
-                      <td><?php echo $result['calle']; ?></td>
+                      <td><?php echo $result['nombre']; ?></td>
                       <td><?php echo $result['nro_calle']; ?></td>
                       <td><?php echo $result['sucurs_princip']; ?></td>
+
+                    
+
 
                       
                       <!--<td><a class="btn btn-success" href="../controladores/revsolicitud1.php?id=<?php echo $result['cod_solicitud']; ?>" target="_blank">Ver +</a> </td>-->
 
+                       <!--
 
-
+                       <?php foreach ($resultado90 as $resu ) { ?>
+                    	<td> <?php echo $resu['nombre'];?></td>
+                    	<?php   }  ?>
+						
+						-->
                      <!-- <td><button value="mod" id="bot_mod" onclick="mostrar_mod()">Modificar Suc</button></td>     -->
 
 
@@ -72,6 +80,9 @@
                     </tr>
                     <?php } ?>
 
+
+
+                    
 
 
 
