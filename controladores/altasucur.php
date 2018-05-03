@@ -31,9 +31,20 @@ $error='';
 
 */
 
+//$id_cal=$_GET['id'];
+
+$nombre_calle=$_GET['nombre'];
+
+
+$calle=$_GET['id'];
+
+//$nombre_calle = str_replace("+", "", $nombre_calle2);
+
 $cuit_cont=$_GET['cuit'];
 $nr_insc=$_GET['nro_ins'];
-$calle=$_GET['calle_id'];
+
+//$calle=$_GET['calle_id'];
+
 $nr_calle=$_GET['calle_alt'];
 $barrio='none';
 
@@ -55,39 +66,7 @@ if (mysqli_connect_errno()) {
 }
 
 
-//controlamos que esa sucursal no este ingresada por otra cuenta por lo tanto sacamos $cuit_contr
 
-
-
-$consulta2 = "SELECT * FROM rm_sucursales WHERE  calle=? AND nro_calle=?";
-
-$sentencia2 = $mysqli->prepare($consulta2);
-
-$sentencia2->bind_param("ss", $val2, $val3);
-
-
-$val2 = $calle;
-$val3 = $nr_calle;
-
-$sentencia2->execute();
-
-$sentencia2->store_result();
-
-
-//$sentencia2->bind_result( $cuit_cont , $calle , $nr_calle);
-$result = $sentencia2->fetch();
-
-
-if ($result!=null) {
-	
-	echo "<script>alert('Sucursal ya ingresada.Por favor ingrese otra.')</script>";
-    
-        
-	header("refresh:0;../index.php") ;
-    die();
-    //exit();
-    
-}
 
 
 //controlamos que no tenga +1 sucursal principal por contribuyente
@@ -119,6 +98,100 @@ if (($result2!=null)&&($sucurs_princ=='si')) {
     die();
     # code...
 }
+
+
+//Consulta para conseguir id_calle si no existe el id muestra error y asi controlo que no ingresen calles con nombres incorrectos
+//esto puede mejorars haceiend directamente desde el javascript que controle el ingreso de datos y comprobar si ese nombre existe.
+
+$consulta6 = "SELECT * FROM rm_sucursales_calles WHERE nombre=? ";
+
+$sentencia6 = $mysqli->prepare($consulta6);
+
+$sentencia6->bind_param("s",$val66);
+
+$val66 = $nombre_calle;
+
+
+$sentencia6->execute();
+
+$sentencia6->store_result();
+
+$result6 = $sentencia6->fetch();
+
+if ($result6==null) {
+
+     echo "<script>alert('Error.La calle no existe o esta mal ingresada.Por favor corregir.')</script>";
+    header("refresh:0;../index.php") ;
+    die();
+
+}
+
+
+
+
+//   echo "<script>alert('Calle numero $calle')</script>";
+/*
+foreach ($resultadoz6 as $resz6 ) {
+
+  $id_calle6=$resz6['id_calle'];
+
+}
+*/
+
+//$calle = $id_calle6;
+
+//$calle = $resultadoz6['id_calle'];
+
+
+
+
+//-----------------------------------------------------------------------------------
+
+
+//controlamos que esa sucursal no este ingresada por otra cuenta por lo tanto sacamos $cuit_contr
+
+
+
+$consulta2 = "SELECT * FROM rm_sucursales WHERE  calle=? AND nro_calle=?";
+
+$sentencia2 = $mysqli->prepare($consulta2);
+
+$sentencia2->bind_param("ss", $val2, $val3);
+
+
+$val2 = $calle;
+$val3 = $nr_calle;
+
+$sentencia2->execute();
+
+$sentencia2->store_result();
+
+
+//$sentencia2->bind_result( $cuit_cont , $calle , $nr_calle);
+$result = $sentencia2->fetch();
+
+
+if ($result!=null) {
+    
+    echo "<script>alert('Sucursal ya ingresada.Por favor ingrese otra.')</script>";
+    
+        
+    header("refresh:0;../index.php") ;
+    die();
+    //exit();
+    
+}
+
+
+
+
+
+
+
+//--------------------------------------------------------
+
+
+
 
 
 

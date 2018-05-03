@@ -21,7 +21,7 @@
 				}
 
 
-				$query = "SELECT * FROM rm_sucursales_calles WHERE  nombre_calle LIKE '%".$b."%'";
+				$query = "SELECT * FROM rm_sucursales_calles WHERE  nombre LIKE '%".$b."%'";
 				$result = $mysqli->query($query);
 
 				$numfilas = $result->num_rows;
@@ -40,10 +40,10 @@
 		            	//echo "Sugerencias"."</br>";
 		                  foreach ($result as $res ) {
 		                  
-		                        $nombre = $res['nombre_calle'];
+		                        $nombre = $res['nombre'];
 		                        $id = $res['cod_calle'];
 		                      	
-		                        echo "<li>".$nombre."<br /><br />"."</li>"; 
+		                        echo $nombre."<br /><br />"; 
 		                           
 		                  									}
 		            	}

@@ -3,7 +3,8 @@
 <head>
 	<title>Sucursal/Tramites</title>
 
-
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 
 
 
@@ -118,6 +119,7 @@ null o 0 ? .
 
 -->
 
+
 <div id="agreg_suc" style="display:none">
 
 	<form onsubmit="return validar1()"   action="controladores/altasucur.php" method="GET" name="agreg_suc" >
@@ -127,52 +129,21 @@ null o 0 ? .
 			
 			<!--Agregar AJAX , JQuery para las calles identificacion ***********************-->
 
+			<!--
+
 			<label for="calle_search">Calle Nombre</label>
 
 			<input type="text" name="calle_search"  id="busqueda">
 
 			<div id="resultado" >
 			</div>
-
+			-->
 
 
 
 			<!--****************************************************************************-->
 
-					<div id='content'>
-			        <script type="text/javascript">
-			            $(document).ready(function () {
-			                
-			                var url = "../sampledata/customers.txt";
-			                // prepare the data
-			                var source =
-			                {
-			                    datatype: "json",
-			                    datafields: [
-			                        { name: 'CompanyName' },
-			                        { name: 'ContactName' }
-			                    ],
-			                    url: url
-			                };
-			                var dataAdapter = new $.jqx.dataAdapter(source);
-			                // Create a jqxInput
-			                $("#jqxInput").jqxInput({ source: dataAdapter, placeHolder: "Contact Name:", displayMember: "ContactName", valueMember: "CompanyName", width: 200, height: 25});
-			                $("#jqxInput").on('select', function (event) {
-			                    if (event.args) {
-			                        var item = event.args.item;
-			                        if (item) {
-			                            var valueelement = $("<div></div>");
-			                            valueelement.text("Value: " + item.value);
-			                            var labelelement = $("<div></div>");
-			                            labelelement.text("Label: " + item.label);
-			                            $("#selectionlog").children().remove();
-			                            $("#selectionlog").append(labelelement);
-			                            $("#selectionlog").append(valueelement);
-			                        }
-			                    }
-			                });
-			            });
-			        </script>
+					
 			        <!--
 			        <input id="jqxInput" />
 			        <br />
@@ -182,24 +153,30 @@ null o 0 ? .
 			  		</div>
 					!-->
 
+			<div class="miform">
+					
+					
+						<p >B&uacute;squeda de Calles</p>
 
+					    		<input class="form-control" type="hidden" name="id" id="id" value=""><!--campo que recibirá el id-->
 
+					    		<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingresar Calle" onkeyup="autocompletar()" autocomplete="off"><!--Campo de busqueda-->
 
+					    		<ul id="lista"></ul>
+					
+				
 
-
-
-
-			
 
 
 			
 
 			<!--****************************************************************************-->
 
+<!--
 			<label for="calle_id">Calle</label>
 			<input type="number" name="calle_id" id="calle_id" required>
 
-
+-->
 
 			<label for="calle_alt">Altura Calle</label>
 			<input type="number" name="calle_alt" id="calle_alt" required>
@@ -217,6 +194,7 @@ null o 0 ? .
 
 </div>
 
+</div>
 
 <div id="mod_suc" style="display:none">
 	
@@ -254,6 +232,13 @@ null o 0 ? .
 <script type="text/javascript" src="js/jquery_3_3_1_min.js"></script>
 
 <script type="text/javascript" src="js/busqueda_calles.js"></script>
+
+
+<script src="js/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript" src="js/sc.js"></script>
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 
 
