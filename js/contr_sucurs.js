@@ -79,7 +79,7 @@ function validar1(){
 function validar2(){
 
 
-var porId=document.getElementById("sucurs_princ").value;
+ porId=document.getElementById("sucurs_princ").value;
 
 
 if ((porId ==0) || (porId =='0'))
@@ -95,3 +95,7 @@ else{
 
 
 }
+
+
+
+

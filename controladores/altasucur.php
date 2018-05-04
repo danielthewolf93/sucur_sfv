@@ -38,6 +38,19 @@ $nombre_calle=$_GET['nombre'];
 
 $calle=$_GET['id'];
 
+
+$nr_calle=$_GET['calle_alt'];
+
+if ($nr_calle=='') {
+
+    $nr_calle=0;
+
+}
+
+
+
+
+
 //$nombre_calle = str_replace("+", "", $nombre_calle2);
 
 $cuit_cont=$_GET['cuit'];
@@ -45,7 +58,12 @@ $nr_insc=$_GET['nro_ins'];
 
 //$calle=$_GET['calle_id'];
 
-$nr_calle=$_GET['calle_alt'];
+
+
+
+
+
+
 $barrio='none';
 
 //$fecha=getdate();
@@ -181,6 +199,62 @@ if ($result!=null) {
     //exit();
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+if ($nr_calle=='') {
+    
+$nr_calle=0;
+
+$consulta23 = "SELECT * FROM rm_sucursales WHERE  calle=? AND nro_calle=NULL";
+
+$sentencia23 = $mysqli->prepare($consulta23);
+
+$sentencia23->bind_param("s", $val23);
+
+
+$val23 = $calle;
+
+$sentencia23->execute();
+
+$sentencia23->store_result();
+
+
+//$sentencia2->bind_result( $cuit_cont , $calle , $nr_calle);
+$result3 = $sentencia23->fetch();
+
+
+if ($result3!=null) {
+    
+    echo "<script>alert('Sucursal ya ingresada.Por favor ingrese otra.')</script>";
+    
+        
+    header("refresh:0;../index.php") ;
+    die();
+    //exit();
+    
+}
+
+}*/
+
+
+
+
+
+
 
 
 

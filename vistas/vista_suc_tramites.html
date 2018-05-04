@@ -11,7 +11,7 @@
 <script>
 $(document).ready(function(){
  $("#bot_alta").click(function(){
- $("#agreg_suc").toggle(1000);
+ $("#agreg_suc").toggle(10);
  });
 });
 </script>
@@ -52,7 +52,19 @@ $(document).ready(function(){
                     <tr>
                       <td><?php echo $result['id_sucursal']; ?></td>
                       <td><?php echo $result['nombre']; ?></td>
+
+                      <?php if ($result['nro_calle']==0) { ?>
+
+                      <td><?php echo 'S/N'; ?></td>
+                  		
+                  	 <?php	}	?>
+
+                  	  <?php if ($result['nro_calle']!=0) { ?>
+
                       <td><?php echo $result['nro_calle']; ?></td>
+
+                     <?php	}	?>
+
                       <td><?php echo $result['sucurs_princip']; ?></td>
 
                     
@@ -182,11 +194,11 @@ null o 0 ? .
 
 						    		<input class="form-control" type="hidden" name="id" id="id" value=""><!--campo que recibirá el id-->
 
-						    		<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingresar Calle" onkeyup="autocompletar()" autocomplete="off"><!--Campo de busqueda-->
+						    		<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingresar Calle" onkeyup="autocompletar()" autocomplete="off" ><!--Campo de busqueda-->
 
 						    		<ul id="lista"></ul>
 						
-				
+						
 
 
 
@@ -201,13 +213,27 @@ null o 0 ? .
 -->
 
 									<label for="calle_alt">Altura Calle</label>
-									<input type="number" name="calle_alt" id="calle_alt" required>
+									<input type="number" name="calle_alt" id="calle_alt" required >
 
+									<br>
+									<label for="calle_alt">Calle S/N</label>
+									<input type="checkbox" name="calle_sin_nom" id="calle_sin_nom" value="S/N" onchange="disab(this);">
+									<input type="hidden" name="id_calle_sin_nom" id="id_calle_sin_nom" value="6">
+									
+
+									<br>
 									<label for="sucurs_princ">Sucursal Principal</label>
 									<select name="sucurs_princ" id="sucurs_princ" >
 										<option value="si">Si</option>
 										<option value="no">No</option>
 									</select>
+
+
+ 
+
+
+
+
 
 									<button id="alta1" type="submit">Agregar</button>
 
@@ -250,6 +276,8 @@ null o 0 ? .
 
 
 <script type="text/javascript" src="js/contr_sucurs.js"></script>
+
+<script type="text/javascript" src="js/manejador_calles.js"></script>
 
 <script type="text/javascript" src="js/jquery_3_3_1_min.js"></script>
 
