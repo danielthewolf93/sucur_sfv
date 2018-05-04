@@ -17,6 +17,17 @@ $(document).ready(function(){
 </script>
 
 
+<script>
+$(document).ready(function(){
+ $("#calle_sin_nom").click(function(){
+ $("#altu").toggle(10);
+ });
+});
+</script>
+
+
+
+
 </head>
 <body>
 
@@ -211,14 +222,15 @@ null o 0 ? .
 			<input type="number" name="calle_id" id="calle_id" required>
 
 -->
-
+									<div id="altu"> 
 									<label for="calle_alt">Altura Calle</label>
-									<input type="number" name="calle_alt" id="calle_alt" required >
+									<input type="number" name="calle_alt" id="calle_alt"  >
+									</div>
 
 									<br>
 									<label for="calle_alt">Calle S/N</label>
-									<input type="checkbox" name="calle_sin_nom" id="calle_sin_nom" value="S/N" onchange="disab(this);">
-									<input type="hidden" name="id_calle_sin_nom" id="id_calle_sin_nom" value="6">
+									<input type="checkbox" name="calle_sin_nom" id="calle_sin_nom"  >
+									<input type="hidden" name="id_calle_sin_nom" id="id_calle_sin_nom" >
 									
 
 									<br>

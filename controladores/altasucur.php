@@ -41,11 +41,14 @@ $calle=$_GET['id'];
 
 $nr_calle=$_GET['calle_alt'];
 
-if ($nr_calle=='') {
+
+
+if ($_GET['calle_alt']=='') {
 
     $nr_calle=0;
 
 }
+else $nr_calle=$_GET['calle_alt'];
 
 
 
