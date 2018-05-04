@@ -21,12 +21,23 @@ var a=document.getElementById('calle_sin_nom');
 
 var b=document.getElementById('nombre').value;
 
-var c=document.getElementById('calle_alt');
+var c=document.getElementById('calle_alt').value;
 
 d=$(nombre).val();
 
 
 if ((a.checked == true)&&(b !=''))
+{
+
+
+
+return true;
+
+
+      } 
+
+
+if ((a.checked == false)&&(b !='')&&(c !=''))
 {
 
 
