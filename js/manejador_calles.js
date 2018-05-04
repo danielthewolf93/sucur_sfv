@@ -19,7 +19,7 @@ function validar1(){
 
 var a=document.getElementById('calle_sin_nom');
 
-var b=document.getElementById('nombre');
+var b=document.getElementById('nombre').value;
 
 var c=document.getElementById('calle_alt');
 
@@ -36,17 +36,8 @@ return true;
 
       } 
     
-else {return false;}
-     
 
-if (a.checked == false)&&( d == '' )&&(a.value !='' ) {
 
 return false;
-
-
-}
- 
-
-
 
 }
