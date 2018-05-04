@@ -56,6 +56,12 @@ return true;
       }    
 
 
+
+
+
+
+
+
 /*
 if (nombre3 =='')
 {
@@ -72,6 +78,8 @@ if (nombre3 =='')
 return false;
 
 }
+
+
 
 
 
