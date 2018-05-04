@@ -23,7 +23,13 @@ var b=document.getElementById('nombre').value;
 
 var c=document.getElementById('calle_alt').value;
 
-d=$(nombre).val();
+var nombre3 = document.getElementById('lista').value;
+
+var nombre2 =$('#lista').val();
+
+var nombre7 = document.getElementById('id').value;
+
+var ejm ='<li>'."No hay resultados".'</li>';
 
 
 if ((a.checked == true)&&(b !=''))
@@ -37,7 +43,9 @@ return true;
       } 
 
 
-if ((a.checked == false)&&(b !='')&&(c !=''))
+
+    
+ if ((a.checked == false)&&(b !='')&&(c !='')&&(nombre7 >1)&&(nombre3!=ejm))
 {
 
 
@@ -45,10 +53,25 @@ if ((a.checked == false)&&(b !='')&&(c !=''))
 return true;
 
 
-      } 
-    
+      }    
+
+
+/*
+if (nombre3 =='')
+{
+
+	return true;
+}
+
+*/
+
+
+
 
 
 return false;
 
 }
+
+
+
