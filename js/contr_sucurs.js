@@ -56,25 +56,7 @@ function mostrar_baja() {
 }
 
 
-function validar1(){
 
-
-//if (('cuit'!='' )&& (''!='') && (''!='')) {
-
-
-  return true;
-
-
-//}
-
-//else {
-
-  //return false;
-//}
-
-
-
-}
 
 function validar2(){
 
