@@ -5,8 +5,16 @@
 
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 
+<script>
+$(document).ready(function(){
+ $("#bot_alta").click(function(){
+ $("#agreg_suc").toggle(1000);
+ });
+});
+</script>
 
 
 </head>
@@ -38,6 +46,7 @@
                       <th>Nro Calle</th>
                       <th>Sucurs Tipo</th>
                       <th></th>
+                      <th></th>
                     </tr>
                     <?php foreach ($resultado as $result ) { ?>
                     <tr>
@@ -64,7 +73,7 @@
 
 
                       
-                       <td><a class="btn btn-success" href="controladores/mostrar_mod.php?id=<?php echo $result['id_sucursal']; ?>" >Modificar</a>
+                       <td><a class="btn btn-warning" href="controladores/mostrar_mod.php?id=<?php echo $result['id_sucursal']; ?>" >Modificar</a>
                       	
                       </td>
 
@@ -73,7 +82,7 @@
                       <td><button  id="bot_baja" onclick="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>">Borrar Suc</button></td>
 					  -->
 
-                      <td><a class="btn btn-success" href="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>&cuit=<?php echo $result['cuit_contr'] ; ?>" >Borrar</a>
+                      <td><a class="btn btn-danger" href="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>&cuit=<?php echo $result['cuit_contr'] ; ?>" >Borrar</a>
                       	
                       </td>
 
@@ -88,11 +97,13 @@
 
                     <?php if ($resultado != null) {?>
 
-                    <td><button value="alta" id="bot_alta" onclick="mostrar_alta()">Agregar Suc</button></td>
+                    <td><button value="alta" id="bot_alta"  class="btn btn-success">Agregar Suc</button></td>
                 	
                 	<?php   }  ?> 
           
 </table>
+
+
 
 
 <!--
@@ -167,14 +178,14 @@ null o 0 ? .
 			<div class="miform">
 					
 					
-						<p >B&uacute;squeda de Calles</p>
+							<p >B&uacute;squeda de Calles</p>
 
-					    		<input class="form-control" type="hidden" name="id" id="id" value=""><!--campo que recibirá el id-->
+						    		<input class="form-control" type="hidden" name="id" id="id" value=""><!--campo que recibirá el id-->
 
-					    		<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingresar Calle" onkeyup="autocompletar()" autocomplete="off"><!--Campo de busqueda-->
+						    		<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingresar Calle" onkeyup="autocompletar()" autocomplete="off"><!--Campo de busqueda-->
 
-					    		<ul id="lista"></ul>
-					
+						    		<ul id="lista"></ul>
+						
 				
 
 
@@ -189,16 +200,16 @@ null o 0 ? .
 
 -->
 
-			<label for="calle_alt">Altura Calle</label>
-			<input type="number" name="calle_alt" id="calle_alt" required>
+									<label for="calle_alt">Altura Calle</label>
+									<input type="number" name="calle_alt" id="calle_alt" required>
 
-			<label for="sucurs_princ">Sucursal Principal</label>
-			<select name="sucurs_princ" id="sucurs_princ" >
-				<option value="si">Si</option>
-				<option value="no">No</option>
-			</select>
+									<label for="sucurs_princ">Sucursal Principal</label>
+									<select name="sucurs_princ" id="sucurs_princ" >
+										<option value="si">Si</option>
+										<option value="no">No</option>
+									</select>
 
-			<button id="alta1" type="submit">Agregar</button>
+									<button id="alta1" type="submit">Agregar</button>
 
 
 	</form>
@@ -251,6 +262,8 @@ null o 0 ? .
 
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
 
 </body>

@@ -6,6 +6,9 @@ function mostrar_alta() {
     div1.style.display = '';
 
 
+  
+
+
     div2=document.getElementById('baj_suc');
     div2.style.display = 'none';
     div3=document.getElementById('mod_suc');
@@ -58,6 +61,7 @@ function validar1(){
 
 //if (('cuit'!='' )&& (''!='') && (''!='')) {
 
+
   return true;
 
 
@@ -68,6 +72,26 @@ function validar1(){
   //return false;
 //}
 
+
+
+}
+
+function validar2(){
+
+
+var porId=document.getElementById("sucurs_princ").value;
+
+
+if ((porId ==0) || (porId =='0'))
+{
+
+  return false;
+}
+
+else{
+
+  return true;
+}
 
 
 }

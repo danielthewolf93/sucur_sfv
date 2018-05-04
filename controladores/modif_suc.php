@@ -6,16 +6,21 @@ $id=$_GET['id_sucurs'];
 
 
 
+
+
 $cuit=$_GET['cuit'];
 $nro_ins=$_GET['nro_ins'];
 
 //Datos a Modificar
 
-$calle=$_GET['calle_id'];
+$calle=$_GET['id'];
 
 $nro_calle=$_GET['calle_alt'];
 
 $suc_princ=$_GET['sucurs_princ'];
+
+
+$nombre_calle=$_GET['nombre'];
 
 
 $suc_resp='si';
@@ -118,7 +123,31 @@ if ($result34!=null&&($suc_princ=='si')) {
 }
 
 
+//-----------------------------------------------------
 
+
+$consulta6 = "SELECT * FROM rm_sucursales_calles WHERE nombre=? ";
+
+$sentencia6 = $mysqli->prepare($consulta6);
+
+$sentencia6->bind_param("s",$val66);
+
+$val66 = $nombre_calle;
+
+
+$sentencia6->execute();
+
+$sentencia6->store_result();
+
+$result6 = $sentencia6->fetch();
+
+if ($result6==null) {
+
+     echo "<script>alert('Error.La calle no existe o esta mal ingresada.Por favor corregir.')</script>";
+    header("refresh:1;../index.php") ;
+    die();
+
+}
 
 
 

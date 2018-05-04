@@ -100,7 +100,7 @@ if (($result2!=null)&&($sucurs_princ=='si')) {
 }
 
 
-//Consulta para conseguir id_calle si no existe el id muestra error y asi controlo que no ingresen calles con nombres incorrectos
+//Consulta para controlar que no ingresen calles con nombres incorrectos
 //esto puede mejorars haceiend directamente desde el javascript que controle el ingreso de datos y comprobar si ese nombre existe.
 
 $consulta6 = "SELECT * FROM rm_sucursales_calles WHERE nombre=? ";

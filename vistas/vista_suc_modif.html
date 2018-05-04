@@ -2,13 +2,16 @@
 <html>
 <head>
 	<title>Sucursal/Modificacion</title>
+
+	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 
 
 <form name="datos_bas" id="datos_bas">
 	
-
+<div class="miform">
 <fieldset>Datos Contribuyente-Modificar Sucursal</fieldset>
 	<label for="cuit">Cuit Contribuyente</label>
 	<input type="number" name="cuit" id="cuit" value="2037462532" placeholder="20374625323" disabled>
@@ -18,16 +21,38 @@
 </form>
 
 
-<form onsubmit="return validar1()"   action="../controladores/modif_suc.php" method="GET" name="modif_suc" >
+<form onsubmit="return validar2()"   action="../controladores/modif_suc.php" method="GET" name="modif_suc" >
+
+
 
 			<label for="id_sucurs" style ="display: none">Id Sucursal</label>
 			<input type="number" name="id_sucurs" id="id_sucurs" value="<?php echo $id_suc; ?>" style ="display: none">
 			
 			<input type="number" name="cuit" id="cuit" value="2037462532" placeholder="20374625323" style="display:none">
 			<input type="number" name="nro_ins" id="nro_ins"  value="2037462532"  style="display:none" >
-			<label for="calle_id">Calle</label>
-			<input type="text" name="calle_id" id="busqueda" placeholder="<?php echo $calle; ?>" required>
-			<div id="resultado"></div>
+			
+
+
+
+
+
+
+					
+					
+					
+									
+
+			<input class="form-control" type="hidden" name="id" id="id" value=""><!--campo que recibirá el id-->
+			<label  for="nombre">Calle</label>
+			<input  type="text" name="nombre" id="nombre" placeholder="<?php echo $nombcalle; ?>" onkeyup="autocompletar()" autocomplete="off" required><!--Campo de busqueda-->
+
+			<ul id="lista"></ul>
+						
+
+			<div>
+
+
+
 
 			<label for="calle_alt">Altura Calle</label>
 			<input type="number" name="calle_alt" id="calle_alt" placeholder="<?php echo $altura; ?>" required>
@@ -35,20 +60,33 @@
 			
 
 			<label for="sucurs_princ">Sucursal Principal</label>
-			<input type="number" name="suc_vista" id="suc_vista" placeholder="<?php echo $sucurs_princ; ?>" disabled>
 			<select name="sucurs_princ" id="sucurs_princ" required>
-				<option disabled selected >Opcion ingresada anteriormente: <?php echo $sucurs_princ; ?> </option>
+				
+				<!--<option disabled selected value="<?php echo $sucurs_princ; ?>">Opcion ingresada anteriormente: <?php echo $sucurs_princ; ?> </option> -->
+
+
 				<option value="si">Si</option>
-				<option value="no">No</option>
+				<option value="no" selected>No</option>
 			</select>
 
-			<button id="alta2" type="submit">Modificar</button>
+			<button id="alta2" class="btn btn-success" type="submit">Modificar</button>
 
 
 </form>
 
 
-<a class="btn btn-success" href="../index.php" >Cancelar</a>
+<a class="btn btn-warning" href="../index.php" >Cancelar</a>
+
+
+<script src="../js/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript" src="../js/sc2.js"></script>
+
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../js/contr_sucurs.js"></script>
+
+<script type="text/javascript" src="../js/jquery_3_3_1_min.js"></script>
 
 
 
