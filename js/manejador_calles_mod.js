@@ -13,7 +13,6 @@ function disab(obj){
 
 
 
-
 function validar1(){
 
 
@@ -44,7 +43,7 @@ var es_nombre = document.getElementById("e2_nombre");
 //var esnombre = $('#e2_nombre').val();
 
 	$.ajax({
-		url: "controladores/proc_bus_val.php",
+		url: "../controladores/proc_bus_val_2.php",
 		type: "POST",
 		data: {nombre:nombre},
 		success:function(data){
@@ -128,44 +127,12 @@ return true;
 
 
 
+
+
+
 return false;
 
 }
-
-
-
-function confirmacion_bor(){
-
-
-var r = confirm("Confirmar borrado de Sucursal?");
-if (r == true) {
-    txt = "You pressed OK!";
-    return true;
-} else {
-    txt = "You pressed Cancel!";
-    return false;
-}
-
-}
-
-
-
-function confirmacion_mod(){
-
-
-var r = confirm("Confirmar modificacion de Sucursal?");
-if (r == true) {
-    txt = "You pressed OK!";
-    return true;
-} else {
-    txt = "You pressed Cancel!";
-    return false;
-}
-
-}
-
-
-
 
 
 

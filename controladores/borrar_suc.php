@@ -3,6 +3,10 @@
 
 //enviando id_sucursal
 
+include_once('conexions.php');
+
+$mysqli=conectar();
+
 
 $id=$_GET['id'];
 
@@ -18,31 +22,11 @@ $cuit=$_GET['cuit'];
 
 
 
-
-//
-
-
-
-
-//------------------------------------------------------------
-$mysqli = new mysqli("localhost", "root", "", "rentascf");
-
-/* comprobar la conexión */
-if (mysqli_connect_errno()) {
-    printf("Falló la conexión: %s\n", mysqli_connect_error());
-    exit();
-}
-
-
 $consulta1 = "DELETE FROM rm_sucursales WHERE id_sucursal=$id ";
 
 
 
 
-
-
-
-//Funciona sola
 $resultado = $mysqli->query($consulta1);
 
 

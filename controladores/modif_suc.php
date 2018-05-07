@@ -2,6 +2,10 @@
 
 //Modificar Sucursal
 
+include_once('conexions.php');
+
+$mysqli=conectar();
+
 $id=$_GET['id_sucurs'];
 
 
@@ -34,20 +38,6 @@ $fecha = date('Y-m-d');
 $tramite_tipo='mod';
 
 
-//
-
-//conexion a la Base de Datos//reemplazar por un archivo funciones_basicas.php asi llamarlo.
-//------------------------------------------------------------
-
-
-
-$mysqli = new mysqli("localhost", "root", "", "rentascf");
-
-/* comprobar la conexión */
-if (mysqli_connect_errno()) {
-    printf("Falló la conexión: %s\n", mysqli_connect_error());
-    exit();
-}
 
 //controlamos si existe cualquier otra sucursal con estos datos ya ingresados.
 
@@ -152,32 +142,6 @@ if ($result6==null) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Si ingresa los mismos datos de otra sucursal ya cargada.controla.
 
 
@@ -219,22 +183,6 @@ $val45 = $id;
 $sentenciamov->execute();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 echo "<script>alert('Sucursal Modificada.')</script>";
 
 
@@ -246,143 +194,5 @@ header("refresh:0;../index.php") ;
 
 
 
-
-
-
-
-//$consulta4 = "UPDATE rm_sucursales SET calle = $calle, nro_calle = $nro_calle, sucurs_princip = $suc_princ  WHERE id_sucursal=$id";
-
-//UPDATE `rentascf`.`rm_sucursales` SET `nro_calle` = '99' WHERE `rm_sucursales`.`id_sucursal` = 44;
-
-
-//$resultado = $mysqli->query($consulta4);
-
-
-/*
-$consulta4 = "UPDATE  rm_sucursales SET calle =?, nro_calle =?, sucurs_princip =?  WHERE id_sucursal=? ";
-
-
-$sentencia33 = $mysqli->prepare($consulta4);
-
-$sentencia33->bind_param("sssi", $val5, $val6, $val7, $val8);
-
-
-
-$val5 = $calle;
-$val6 = $nro_calle;
-$val7 = $suc_princ;
-$val8 = $id;
-
-
-
-$sentencia33->execute();
-$sentencia33->store_result();
-*/
-
-
-
-//Funciona sola
-//$resultado = $mysqli->query($consulta4);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-//Si ya existe una sucursal cargada como sucursal principal.controla.
-
-//
-
-$consulta2 = "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND nro_inscripc=? AND sucurs_princip=?" ;
-
-
-$sentencia2 = $mysqli->prepare($consulta2);
-
-$sentencia2->bind_param("sss", $val11, $val22, $val33);
-
-
-$val11 = $cuit;
-$val22 = $nro_ins;
-$val33 = $suc_resp;
-
-
-$sentencia2->execute();
-
-$sentencia2->store_result();
-
-
-//$sentencia2->bind_result( $cuit_cont , $calle , $nr_calle);
-$result = $sentencia2->fetch();
-
-
-if (($result!=null)&&($suc_princ=='si')) {
-	
-	echo "<script>alert('Error de Modificacion.Ya existe una sucursal Principal.')</script>";
-    
-    header("refresh:0;../index.php");    
-
-	// header("refresh:0;mostrar_mod.php?id=$id") ;
-    die();
-    //exit();
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$consulta2 = "UPDATE  rm_sucursales SET calle=$calle,nro_calle=$nro_calle,sucurs_princip=$suc_princ  WHERE id_sucursal=$id ";
-
-
-
-
-
-
-
-
-//Funciona sola
-$resultado = $mysqli->query($consulta2);
-
-
-echo "<script>alert('Sucursal Modificada.')</script>";
-
-
-
-header("refresh:0;../index.php") ;
-
-
-
-
-
-
-?>
-
-
-
-*/
 
 ?>

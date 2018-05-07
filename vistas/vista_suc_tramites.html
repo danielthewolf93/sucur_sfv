@@ -78,22 +78,6 @@ $(document).ready(function(){
 
                       <td><?php echo $result['sucurs_princip']; ?></td>
 
-                    
-
-
-                      
-                      <!--<td><a class="btn btn-success" href="../controladores/revsolicitud1.php?id=<?php echo $result['cod_solicitud']; ?>" target="_blank">Ver +</a> </td>-->
-
-                       <!--
-
-                       <?php foreach ($resultado90 as $resu ) { ?>
-                    	<td> <?php echo $resu['nombre'];?></td>
-                    	<?php   }  ?>
-						
-						-->
-                     <!-- <td><button value="mod" id="bot_mod" onclick="mostrar_mod()">Modificar Suc</button></td>     -->
-
-
 
                       
                        <td><a class="btn btn-warning" href="controladores/mostrar_mod.php?id=<?php echo $result['id_sucursal']; ?>" >Modificar</a>
@@ -101,11 +85,7 @@ $(document).ready(function(){
                       </td>
 
 
-                      <!--
-                      <td><button  id="bot_baja" onclick="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>">Borrar Suc</button></td>
-					  -->
-
-                      <td><a class="btn btn-danger" href="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>&cuit=<?php echo $result['cuit_contr'] ; ?>" >Borrar</a>
+                      <td><a class="btn btn-danger" href="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>&cuit=<?php echo $result['cuit_contr'] ; ?>" onClick="return confirmacion_bor();">Borrar</a>
                       	
                       </td>
 
@@ -129,74 +109,16 @@ $(document).ready(function(){
 
 
 
-<!--
-************************************************************************************
-									*************
-   									+++MEJORAS+++
-									*************
-Permitir que si el checkbox esta seleccionado o completado la altura de calle dejar enviar datos
-Para su posterior busqueda.
 
-*Agregar checkbox y un javascript que controle si esto esta seleccionado dejarlo continuar y poner altura
-null o 0 ? .
-
-*Sino completar con la altura correspondiente.
-
-
-
-*Mejorar el aucomplete del campo imput para calles permitir ingresar nombre y almacenar por el codigo_calle
-
-*Mostrar las sucursales por el nombre de calles y no por el codigo_calle hacer conversion o traer el otro dato_nombre.
-
-									*************
-   									+++++++++++++
-									*************
-
-
-************************************************************************************
-
-
-
-
-	<button value="alta" id="bot_alta" onclick="mostrar_alta()">Agregar Suc</button>
-	<button value="mod" id="bot_mod" onclick="mostrar_mod()">Modificar Suc</button>
-	<button value="baja" id="bot_baja" onclick="mostrar_baja()">Borrar Suc</button>
-
--->
-
-
+<div id="mensaje"></div>
 <div id="agreg_suc" style="display:none">
 
-	<form onsubmit="return validar1()"   action="controladores/altasucur.php" method="GET" name="agreg_suc" >
+
+	<form onsubmit="return validar1();"   action="controladores/altasucur.php" method="GET" name="agreg_suc" >
 
 			<input type="number" name="cuit" id="cuit" value="2037462532" placeholder="20374625323" style="display:none">
 			<input type="number" name="nro_ins" id="nro_ins"  value="2037462532"  style="display:none">
-			
-			<!--Agregar AJAX , JQuery para las calles identificacion ***********************-->
 
-			<!--
-
-			<label for="calle_search">Calle Nombre</label>
-
-			<input type="text" name="calle_search"  id="busqueda">
-
-			<div id="resultado" >
-			</div>
-			-->
-
-
-
-			<!--****************************************************************************-->
-
-					
-			        <!--
-			        <input id="jqxInput" />
-			        <br />
-			        <label style="font-family: Verdana; font-size: 10px;">ex: Ana</label>
-			         <div style="font-family: Verdana; font-size: 13px;" id='selectionlog'>
-			        </div>
-			  		</div>
-					!-->
 
 			<div class="miform">
 					
@@ -208,20 +130,11 @@ null o 0 ? .
 						    		<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingresar Calle" onkeyup="autocompletar()" autocomplete="off" required ><!--Campo de busqueda-->
 
 						    		<ul id="lista"></ul>
+									<div id="e_nombre" style="color:red;"></div>
+									<input type="hidden" id="e2_nombre" value="prueba">
 						
-						
 
 
-
-			
-
-			<!--****************************************************************************-->
-
-<!--
-			<label for="calle_id">Calle</label>
-			<input type="number" name="calle_id" id="calle_id" required>
-
--->
 									<div id="altu"> 
 									<label for="calle_alt">Altura Calle</label>
 									<input type="number" name="calle_alt" id="calle_alt"  >
@@ -232,6 +145,8 @@ null o 0 ? .
 									<input type="checkbox" name="calle_sin_nom" id="calle_sin_nom"  >
 									<input type="hidden" name="id_calle_sin_nom" id="id_calle_sin_nom" >
 									
+									<div id="e_nombre4" style="color:red;"></div>
+
 
 									<br>
 									<label for="sucurs_princ">Sucursal Principal</label>
@@ -239,12 +154,6 @@ null o 0 ? .
 										<option value="si">Si</option>
 										<option value="no">No</option>
 									</select>
-
-
- 
-
-
-
 
 
 									<button id="alta1" type="submit">Agregar</button>
@@ -258,7 +167,7 @@ null o 0 ? .
 
 <div id="mod_suc" style="display:none">
 	
-	<form onsubmit="return validar1()"   action="controladores/altasucur.php" method="GET" name="mod_suc" >
+	<form onsubmit="return validar2()"   action="controladores/altasucur.php" method="GET" name="mod_suc" >
 
 			<input type="number" name="cuit" id="cuit" value="2037462532" placeholder="20374625323" style="display:none">
 			<input type="number" name="nro_ins" id="nro_ins"  value="2037462532"  style="display:none">
@@ -274,7 +183,7 @@ null o 0 ? .
 				<option value="no">No</option>
 			</select>
 
-			<button id="alta1" type="submit">Editar</button>
+			<button id="alta1" type="submit" >Editar</button>
 
 
 	</form>

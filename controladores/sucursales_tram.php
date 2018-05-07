@@ -1,18 +1,6 @@
 <?php 
 
 
-//if(isset($_SESSION['cuit']))
-
-//{
-
-
-
-//}
-
-//else {
-	//
-//	header;
-//}
 
 
 $id_suc=$_POST[''];

@@ -2,25 +2,11 @@
 
 
 
+include_once('controladores/conexions.php');
 
+$mysqli=conectar();
 
 #Lista de Sucursales.
-
-
-
-
-//------------------------------------------
-$mysqli = new mysqli("localhost", "root", "", "rentascf");
-
-/* comprobar la conexión */
-if (mysqli_connect_errno()) {
-    printf("Falló la conexión: %s\n", mysqli_connect_error());
-    exit();
-}
-
-
-
-
 
 
 
@@ -35,16 +21,6 @@ $consulta3 = "SELECT * FROM rm_sucursales INNER JOIN rm_sucursales_calles WHERE 
 $resultado = $mysqli->query($consulta3);
 
 //Esto es calles prediccion prueba
-
-
-
-
-
-
-//Funciona sola
-
-
-
 
 
 

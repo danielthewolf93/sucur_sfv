@@ -1,25 +1,13 @@
 <?php
 
 
+include_once('conexions.php');
+
+$mysqli=conectar();
+
 $id=$_GET['id'];
 
 
-
-
-
-//------------------------------------------------------------
-$mysqli = new mysqli("localhost", "root", "", "rentascf");
-
-/* comprobar la conexión */
-if (mysqli_connect_errno()) {
-    printf("Falló la conexión: %s\n", mysqli_connect_error());
-    exit();
-}
-
-
-
-
-//$consulta = "SELECT id_sucursal,calle,nro_calle,sucurs_princip FROM rm_sucursales WHERE id_sucursal=$id ";
 
 $consulta = "SELECT * FROM rm_sucursales INNER JOIN rm_sucursales_calles WHERE id_sucursal=$id AND rm_sucursales.calle = rm_sucursales_calles.id_calle";
 

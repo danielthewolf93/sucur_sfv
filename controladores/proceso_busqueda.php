@@ -1,9 +1,9 @@
 <?php
-include_once("../modelo/line_conect.php");//incluye la conexion
-include_once("../modelo/producto.php");//incluye modelo producto
+include_once("../modelo/line_conect.php");
+include_once("../modelo/calless.php");
 $nombre = $_POST['nombre'];//recibe el nombre a buscar
-$objproducto=new producto();
-$consulta=$objproducto->get_Productos_Especificos($nombre);// se llama a la funcion
+$objproducto=new calle();
+$consulta=$objproducto->get_calles_Especificas($nombre);// se llama a la funcion
 
 
 if($consulta){

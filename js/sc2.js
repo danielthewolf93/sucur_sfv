@@ -26,3 +26,4 @@ function set_item(id,item) {
 	$('#lista').hide();
 }
 
+

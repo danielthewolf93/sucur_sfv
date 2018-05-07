@@ -5,6 +5,16 @@
 
 	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<script>
+$(document).ready(function(){
+ $("#calle_sin_nom").click(function(){
+ $("#altu").toggle(10);
+ });
+});
+</script>
+
 </head>
 <body>
 
@@ -20,8 +30,8 @@
 
 </form>
 
-
-<form onsubmit="return validar2()"   action="../controladores/modif_suc.php" method="GET" name="modif_suc" >
+<div id="mensaje"></div>
+<form onsubmit="return validar1();"   action="../controladores/modif_suc.php" method="GET" name="modif_suc" >
 
 
 
@@ -33,12 +43,6 @@
 			
 
 
-
-
-
-
-					
-					
 					
 									
 
@@ -47,17 +51,26 @@
 			<input  type="text" name="nombre" id="nombre" placeholder="<?php echo $nombcalle; ?>" onkeyup="autocompletar()" autocomplete="off" required><!--Campo de busqueda-->
 
 			<ul id="lista"></ul>
+			<div id="e_nombren" style="color:red;"></div>
+			<input type="hidden" id="e2_nombren" value="prueba">
 						
 
 			<div>
 
 
 
-
+			<div id="altu">
 			<label for="calle_alt">Altura Calle</label>
-			<input type="number" name="calle_alt" id="calle_alt" placeholder="<?php echo $altura; ?>" required>
+			<input type="number" name="calle_alt" id="calle_alt" placeholder="<?php echo $altura; ?>" >
+			</div>
 
-			
+
+			<br>
+			<label for="calle_alt">Calle S/N</label>
+			<input type="checkbox" name="calle_sin_nom" id="calle_sin_nom"  >
+			<input type="hidden" name="id_calle_sin_nom" id="id_calle_sin_nom" >
+									
+			<div id="e_nombre4" style="color:red;"></div>
 
 			<label for="sucurs_princ">Sucursal Principal</label>
 			<select name="sucurs_princ" id="sucurs_princ" required>
@@ -69,7 +82,7 @@
 				<option value="no" selected>No</option>
 			</select>
 
-			<button id="alta2" class="btn btn-success" type="submit">Modificar</button>
+									<button id="alta1" class="btn btn-success" type="submit">Modificar</button>
 
 
 </form>
@@ -88,6 +101,10 @@
 
 <script type="text/javascript" src="../js/jquery_3_3_1_min.js"></script>
 
+
+<script type="text/javascript" src="../js/manejador_calles_mod.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
 
 

@@ -1,37 +1,11 @@
 <?php
 
 date_default_timezone_set('America/Argentina/Catamarca');
-/*
-$link = mysqli_connect("localhost", "root", "", "rentascf");
 
 
-date_default_timezone_set('America/Argentina/Catamarca');
+include_once('conexions.php');
 
-
-
-$cuit_cont=$_GET['cuit'];
-$nr_insc=$_GET['nro_ins'];
-$calle=$_GET['calle_id'];
-$nr_calle=$_GET['calle_alt'];
-
-
-
-
-$barrio='none';
-
-//$fecha=getdate();
-
-$fecha = date('Y-m-d');
-
-
-$sucurs_princ=$_GET['sucurs_princ'];
-
-$error='';
-
-
-*/
-
-//$id_cal=$_GET['id'];
+$mysqli=conectar();
 
 $nombre_calle=$_GET['nombre'];
 
@@ -78,13 +52,7 @@ $sucurs_princ=$_GET['sucurs_princ'];
 $tramite_tipo='alta';
 
 
-$mysqli = new mysqli("localhost", "root", "", "rentascf");
 
-/* comprobar la conexión */
-if (mysqli_connect_errno()) {
-    printf("Falló la conexión: %s\n", mysqli_connect_error());
-    exit();
-}
 
 
 
@@ -150,25 +118,6 @@ if ($result6==null) {
 
 
 
-//   echo "<script>alert('Calle numero $calle')</script>";
-/*
-foreach ($resultadoz6 as $resz6 ) {
-
-  $id_calle6=$resz6['id_calle'];
-
-}
-*/
-
-//$calle = $id_calle6;
-
-//$calle = $resultadoz6['id_calle'];
-
-
-
-
-//-----------------------------------------------------------------------------------
-
-
 //controlamos que esa sucursal no este ingresada por otra cuenta por lo tanto sacamos $cuit_contr
 
 
@@ -202,65 +151,6 @@ if ($result!=null) {
     //exit();
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-if ($nr_calle=='') {
-    
-$nr_calle=0;
-
-$consulta23 = "SELECT * FROM rm_sucursales WHERE  calle=? AND nro_calle=NULL";
-
-$sentencia23 = $mysqli->prepare($consulta23);
-
-$sentencia23->bind_param("s", $val23);
-
-
-$val23 = $calle;
-
-$sentencia23->execute();
-
-$sentencia23->store_result();
-
-
-//$sentencia2->bind_result( $cuit_cont , $calle , $nr_calle);
-$result3 = $sentencia23->fetch();
-
-
-if ($result3!=null) {
-    
-    echo "<script>alert('Sucursal ya ingresada.Por favor ingrese otra.')</script>";
-    
-        
-    header("refresh:0;../index.php") ;
-    die();
-    //exit();
-    
-}
-
-}*/
-
-
-
-
-
-
-
-
-
 
 
 
@@ -317,28 +207,6 @@ foreach ($resultadoz as $resz ) {
 
 
 
-
-/*
-foreach ($result8 as $var8) {
-    
-    $id_sucu=$var8['id_sucursal'];
-
-    # code...
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
 //-----------------------------------------------------------------------------//
 
 
@@ -362,144 +230,12 @@ echo "<script>alert('Sucursal creada con exito')</script>";
 
 
 
-//$bd = new conex('localhost', 'root', '', 'rentascf');
 
-//echo 'Éxito... ' . $link->host_info . "\n";
-
-/*try {
-
-
-
-
-         $conexion = new PDO('mysql:host=localhost ;dbname=rentascf','root','');
-
-    }catch(PDOException $e){
-
-       echo "Error:" .$e->getMessage();;
-    }
-*/
-    //$statement = $bd->prepare('SELECT * FROM rm_sucursales WHERE cuit_contr= :usuario AND calle= :calle AND nro_calle= :nr_calle');
-
-
-
-//$query = "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND calle=? AND nro_calle=?"; 
-//$params = array($cuit_cont,$nr_insc,$calle); 
-
-
-//$stmt = mysqli_prepare($link, "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND calle=? AND nro_calle=?");
-
-
-
-//$consulta = "INSERT INTO myCity (Name, CountryCode, District) VALUES (?,?,?)";
-
-/*
-$consulta = "SELECT * FROM rm_sucursales WHERE cuit_contr=? AND calle=? AND nro_calle=?";
-
-$sentencia = $link->prepare($consulta);
-
-$sentencia->bind_param("sss", $val1, $val2, $val3);
-
-$val1 = $cuit_cont;
-$val2 = $nr_insc;
-$val3 = $calle;
-
-
-
-$sentencia->execute();
-
-$resultado = $sentencia->fetch();
-
-if($resultado!=NULL)
-    {
-
-    	echo "<script>alert('Sucursal ingresada,Por favor ingresar otra sucursal.Gracias')</script>";
-
-    	//$error.='Sucursal ingresada,Por favor ingresar otra sucursal.Gracias';
-
-    }
-
-
-
-
-
-
-
-$consulta2 = "INSERT INTO rm_sucursales (
-    	id_sucursal,cuit_contr,nro_inscripc,calle,nro_calle,barrio,fecha_generac,sucurs_princip) VALUES (null,:cuit_cont,:nr_insc,:calle,:nro_calle,:barrio,:fecha,:sucur_princ )";
-
-$sentencia2 = $link->prepare($consulta2);
-
-$sentencia2->bind_param("sssssss", $val1, $val2, $val3, $val4, $val5, $val6, $val7 );
-
-$val1 = $cuit_cont;
-$val2 = $nr_insc;
-$val3 = $calle;
-
-
-
-$sentencia2->execute();
-
-//mysqli_stmt_execute($stmt);
-
-
-/* 
-returns array( 
-0=> array('firstName' => 'Bob', 'lastName' => 'Johnson') 
-) 
-
-
-
-
-
-
-
-
-    $statement->execute(array(
-        ':usuario' => $cuit_cont,
-        ':calle' => $calle,
-        ':nr_calle' => $nr_calle,
-    ));
-
-    $resultado = $statement->fetch();
-
-    if($resultado!=NULL)
-    {
-
-    	echo "<script>alert('Sucursal ingresada,Por favor ingresar otra sucursal.Gracias')</script>";
-
-    	//$error.='Sucursal ingresada,Por favor ingresar otra sucursal.Gracias';
-
-    }
-    
-
-    $statement2 = $bd->prepare('INSERT INTO rm_sucursales (
-    	id_sucursal,cuit_contr,nro_inscripc,calle,nro_calle,barrio,fecha_generac,sucurs_princip) VALUES (null,:cuit_cont,:nr_insc,:calle,:nro_calle,:barrio,:fecha,:sucur_princ )');
-
-     
-    $statement2->execute(array(
-        ':cuit_cont' => $cuit_cont,
-        ':nr_insc' => $nr_insc,
-        ':calle' => $calle,
-        ':nro_calle' => $nr_calle,
-        ':barrio' => $barrio,
-        ':fecha' => $fecha,
-        ':sucur_princ' => $sucurs_princ
-         ));
-
-   // echo "<script>alert('Usuario creado con exito')</script>";
-
-
-
-   
- 	echo "<script>alert('Sucursal creada con exito')</script>";
-
-   */
 
     header('Location:../index.php') ;
 
 
 
 
-	//include('../vistas/vista_suc_tramites.html');
 
 ?>

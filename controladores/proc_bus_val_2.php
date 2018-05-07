@@ -26,18 +26,18 @@ $result6 = $sentencia6->fetch();
 if ($result6 == null) {
 
 
-	$mensaje = "<script>document.getElementById('e_nombre').innerHTML='Nombre de calle no existe';</script>";
+	$mensaje = "<script>document.getElementById('e_nombren').innerHTML='Nombre de calle no existe';</script>";
      
-     echo "<script>document.getElementById('e2_nombre').value='Nombre no existe';</script>";
+     echo "<script>document.getElementById('e2_nombren').value='Nombre no existe';</script>";
      
      
 }
 
 else {
 
-		$mensaje = "<script>document.getElementById('e_nombre').innerHTML='';</script>";
+		$mensaje = "<script>document.getElementById('e_nombren').innerHTML='';</script>";
 
-		echo "<script>document.getElementById('e2_nombre').value='';</script>";
+		echo "<script>document.getElementById('e2_nombren').value='';</script>";
 
 }
 echo $mensaje;
