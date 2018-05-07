@@ -109,7 +109,6 @@ $(document).ready(function(){
 
 
 
-
 <div id="mensaje"></div>
 <div id="agreg_suc" style="display:none">
 
@@ -162,32 +161,6 @@ $(document).ready(function(){
 	</form>
 
 </div>
-
-</div>
-
-<div id="mod_suc" style="display:none">
-	
-	<form onsubmit="return validar2()"   action="controladores/altasucur.php" method="GET" name="mod_suc" >
-
-			<input type="number" name="cuit" id="cuit" value="2037462532" placeholder="20374625323" style="display:none">
-			<input type="number" name="nro_ins" id="nro_ins"  value="2037462532"  style="display:none">
-			<label for="calle_id">Calle</label>
-			<input type="number" name="calle_id" id="calle_id" placeholder="<?php echo $result['calle']; ?>" required>
-
-			<label for="calle_alt">Altura Calle</label>
-			<input type="number" name="calle_alt" id="calle_alt" required>
-
-			<label for="sucurs_princ">Sucursal Principal</label>
-			<select name="sucurs_princ" id="sucurs_princ" >
-				<option value="si">Si</option>
-				<option value="no">No</option>
-			</select>
-
-			<button id="alta1" type="submit" >Editar</button>
-
-
-	</form>
-
 
 </div>
 

@@ -38,7 +38,7 @@ var nombre = $('#nombre').val();//obtener el nombre y/o termino de busqeuda
 
 
 
-var es_nombre = document.getElementById("e2_nombre");
+var es_nombre = document.getElementById("e2_nombren");
 
 //var esnombre = $('#e2_nombre').val();
 
@@ -58,7 +58,7 @@ var es_nombre = document.getElementById("e2_nombre");
 
 //window.setInterval("validar1()",240);
 
-var es_nombre = document.getElementById("e2_nombre");
+var es_nombre = document.getElementById("e2_nombren");
 
 
 
@@ -115,7 +115,7 @@ return true;
 
 
     
- if ((a.checked == false)&&(b !='')&&(c !='')&&(nombre7 >1)&&(es_nombre.value == ''))
+ if ((a.checked == false)&&(b !='')&&(c !='')&&(nombre7 >0)&&(es_nombre.value == ''))
 {
 
 

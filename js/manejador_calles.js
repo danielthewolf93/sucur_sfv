@@ -116,7 +116,7 @@ return true;
 
 
     
- if ((a.checked == false)&&(b !='')&&(c !='')&&(nombre7 >1)&&(es_nombre.value == ''))
+ if ((a.checked == false)&&(b !='')&&(c !='')&&(nombre7 >0)&&(es_nombre.value == ''))
 {
 
 
