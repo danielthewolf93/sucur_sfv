@@ -9,6 +9,7 @@ function autocompletar() {
 			success:function(data){
 				$('#lista').show();//mistrar la lista
 				$('#lista').html(data);//mostrar resultado de consulta en la lista
+
 			}
 		});
 	} else {

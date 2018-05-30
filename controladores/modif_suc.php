@@ -21,6 +21,16 @@ $calle=$_GET['id'];
 
 $nro_calle=$_GET['calle_alt'];
 
+
+if (($_GET['calle_alt']=='')||($_GET['calle_sin_nom']=="on")) {
+
+   $nro_calle=0;
+
+}
+
+else $nro_calle=$_GET['calle_alt'];
+
+
 $suc_princ=$_GET['sucurs_princ'];
 
 

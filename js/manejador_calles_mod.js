@@ -29,7 +29,7 @@ var nombre2 =$('#lista').val();
 var nombre7 = document.getElementById('id').value;
 
 
-
+var n = document.getElementById('e_nombre').value;
 
 
 
@@ -38,12 +38,12 @@ var nombre = $('#nombre').val();//obtener el nombre y/o termino de busqeuda
 
 
 
-var es_nombre = document.getElementById("e2_nombren");
+var es_nombre = document.getElementById("e2_nombre");
 
 //var esnombre = $('#e2_nombre').val();
 
 	$.ajax({
-		url: "../controladores/proc_bus_val_2.php",
+		url: "controladores/proc_bus_val.php",
 		type: "POST",
 		data: {nombre:nombre},
 		success:function(data){
@@ -58,7 +58,7 @@ var es_nombre = document.getElementById("e2_nombren");
 
 //window.setInterval("validar1()",240);
 
-var es_nombre = document.getElementById("e2_nombren");
+var es_nombre = document.getElementById("e2_nombre");
 
 
 
@@ -115,8 +115,8 @@ return true;
 
 
     
- if ((a.checked == false)&&(b !='')&&(c !='')&&(nombre7 >0)&&(es_nombre.value == ''))
-{
+ if ((a.checked == false)&&(b !='')&&(c !='')&&(nombre7 >0)&&(es_nombre.value == '')&&(nombre3.value == '')&&(n == ''))
+ {
 
 
 
@@ -127,13 +127,9 @@ return true;
 
 
 
-
-
-
 return false;
 
 }
-
 
 
 

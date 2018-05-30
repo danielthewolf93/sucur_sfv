@@ -21,6 +21,7 @@ $(document).ready(function(){
 $(document).ready(function(){
  $("#calle_sin_nom").click(function(){
  $("#altu").toggle(10);
+ 
  });
 });
 </script>
@@ -128,10 +129,11 @@ $(document).ready(function(){
 
 						    		<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingresar Calle" onkeyup="autocompletar()" autocomplete="off" required ><!--Campo de busqueda-->
 
-						    		<ul id="lista"></ul>
+						    		<ul id="lista" ></ul>
 									<div id="e_nombre" style="color:red;"></div>
-									<input type="hidden" id="e2_nombre" value="prueba">
-						
+									<input type="hidden" id="e2_nombre" value="">
+									
+
 
 
 									<div id="altu"> 

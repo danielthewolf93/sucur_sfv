@@ -17,11 +17,12 @@ $nr_calle=$_GET['calle_alt'];
 
 
 
-if ($_GET['calle_alt']=='') {
+if (($_GET['calle_alt']=='')||($_GET['calle_sin_nom']=="on")) {
 
     $nr_calle=0;
 
 }
+
 else $nr_calle=$_GET['calle_alt'];
 
 
