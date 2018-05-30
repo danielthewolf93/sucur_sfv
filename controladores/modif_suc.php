@@ -87,7 +87,7 @@ if ($result!=null) {
     echo "<script>alert('No se puede modificar.Existe una sucursal con esos datos')</script>";
     
         
-    header("refresh:0;../index.php") ;
+header("refresh:0;http://localhost/sucur_sfv/controladores/mostrar_mod.php?id='$id'");
     die();
     //exit();
     
@@ -124,7 +124,7 @@ if ($result34!=null&&($suc_princ=='si')) {
     echo "<script>alert('Error.Ya existe una sucursal principal para $cuit')</script>";
     
         
-    header("refresh:0;../index.php") ;
+header("refresh:0;http://localhost/sucur_sfv/controladores/mostrar_mod.php?id='$id'");
     die();
     //exit();
     
@@ -152,7 +152,7 @@ $result6 = $sentencia6->fetch();
 if ($result6==null) {
 
      echo "<script>alert('Error.La calle no existe o esta mal ingresada.Por favor corregir.')</script>";
-    header("refresh:1;../index.php") ;
+header("refresh:0;http://localhost/sucur_sfv/controladores/mostrar_mod.php?id='$id'");
     die();
 
 }
@@ -204,11 +204,16 @@ $sentenciamov->execute();
 echo "<script>alert('Sucursal Modificada.')</script>";
 
 
+header("refresh:0;http://localhost/sucur_sfv/controladores/mostrar_mod.php?id='$id'");
 
-header("refresh:0;../index.php") ;
+//header("refresh:0;../index.php") ;
+/*
 
+$dire=$_SERVER['PHP_SELF'];
 
+header("refresh:0;");
 
+*/
 
 
 
