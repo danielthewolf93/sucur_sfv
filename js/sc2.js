@@ -3,13 +3,13 @@ function autocompletar() {
 	var nombre = $('#nombre').val();//obtener el nombre y/o termino de busqeuda
 	if (nombre.length >= min_length) {
 		$.ajax({
-			url: '../controladores/proceso_busqueda.php',
+			url: '../controladores/proceso_busqueda_mod.php',
 			type: 'POST',
 			data: {nombre:nombre},
 			success:function(data){
 				$('#lista').show();//mistrar la lista
 				$('#lista').html(data);//mostrar resultado de consulta en la lista
-				
+
 			}
 		});
 	} else {
