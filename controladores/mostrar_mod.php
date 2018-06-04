@@ -1,6 +1,10 @@
 <?php
 
 
+session_start();
+
+$_SESSION['URLanterior'] = "";
+
 include_once('conexions.php');
 
 $mysqli=conectar();

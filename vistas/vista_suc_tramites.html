@@ -27,6 +27,27 @@ $(document).ready(function(){
 </script>
 
 
+<script>
+    function soloNum(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = "1234567890";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+</script>
+
 
 
 </head>
@@ -102,6 +123,8 @@ $(document).ready(function(){
                     <?php if ($resultado != null) {?>
 
                     <td><button value="alta" id="bot_alta"  class="btn btn-success">Agregar Suc</button></td>
+
+                   <!-- <td><a href="controladores/nueva_alta.php" class="btn btn-success">Agregar Pag.New</a></td> -->
                 	
                 	<?php   }  ?> 
           
@@ -122,12 +145,13 @@ $(document).ready(function(){
 
 			<div class="miform">
 					
-					
-							<p >B&uacute;squeda de Calles</p>
+								
+							
+									<label for="id">B&uacute;squeda de Calles</label>
 
 						    		<input class="form-control" type="hidden" name="id" id="id" ><!--campo que recibirá el id-->
 
-						    		<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingresar Calle" onkeyup="autocompletar()" autocomplete="off" required ><!--Campo de busqueda-->
+						    		<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingresar Calle" onkeyup="autocompletar()" autocomplete="off" required maxlength="25" ><!--Campo de busqueda-->
 
 						    		<ul id="lista" ></ul>
 									<div id="e_nombre" style="color:red;"></div>
@@ -138,7 +162,7 @@ $(document).ready(function(){
 
 									<div id="altu"> 
 									<label for="calle_alt">Altura Calle</label>
-									<input type="number" name="calle_alt" id="calle_alt"  >
+									<input type="text" name="calle_alt" id="calle_alt" maxlength="4" onkeypress="return soloNum(event)" class="form-control" placeholder="Ingresar Altura">
 									</div>
 
 									<br>
@@ -153,11 +177,14 @@ $(document).ready(function(){
 									<label for="sucurs_princ">Sucursal Principal</label>
 									<select name="sucurs_princ" id="sucurs_princ" >
 										<option value="si">Si</option>
-										<option value="no">No</option>
+										<option value="no" selected>No</option>
 									</select>
 
 
 									<button id="alta1" type="submit">Agregar</button>
+
+
+
 
 
 	</form>

@@ -27,11 +27,14 @@ if($consulta){
 
 	//echo '<li value="vacio"></li>';
 
+	echo "<script>document.getElementById('e_nombre').innerHTML='Nombre de Calle No existe';  document.getElementById('e_nombre').style='color:red;'</script>";
+
+
 	echo '<li value="vacio">'."No hay resultados".'</li>';
 
 	echo "<script>document.getElementById('e2_nombre').value='Nombre no existe';</script>";
 
-	echo "<script>document.getElementById('e_nombre').innerHTML='Nombre de calle no existe'; document.getElementById('e_nombre').style='color:red;'</script>";
+	
 
 
 		//echo "<script>document.getElementById('e2_nombren').value='Nombre no existe';</script>";

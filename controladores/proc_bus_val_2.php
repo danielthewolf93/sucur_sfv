@@ -27,8 +27,10 @@ if ($result6 == null) {
 
 
 	$mensaje = "<script>document.getElementById('e_nombre').innerHTML='Nombre de calle incorrecto';</script>";
+	
+		echo "<script>document.getElementById('e_nombre').innerHTML='Nombre de Calle Incorrecto';  document.getElementById('e_nombre').style='color:red;'</script>";
 
-	echo "<script>document.getElementById('e_nombre').style='color:red;'</script>";
+		
      
      echo "<script>document.getElementById('e2_nombre').value='Nombre no existe';</script>";
      
@@ -40,6 +42,8 @@ else {
 		$mensaje = "<script>document.getElementById('e_nombre').innerHTML='';</script>";
 
 		echo "<script>document.getElementById('e2_nombre').value='';</script>";
+
+
 
 }
 echo $mensaje;

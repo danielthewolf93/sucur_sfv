@@ -13,6 +13,7 @@ function disab(obj){
 
 
 
+
 function validar1(){
 
 
@@ -29,7 +30,7 @@ var nombre2 =$('#lista').val();
 var nombre7 = document.getElementById('id').value;
 
 
-var n = document.getElementById('e_nombre').value;
+
 
 
 
@@ -43,7 +44,7 @@ var es_nombre = document.getElementById("e2_nombre");
 //var esnombre = $('#e2_nombre').val();
 
 	$.ajax({
-		url: "proc_bus_val_2.php",
+		url: "proc_bus_val.php",
 		type: "POST",
 		data: {nombre:nombre},
 		success:function(data){
@@ -62,16 +63,11 @@ var es_nombre = document.getElementById("e2_nombre");
 
 
 
-
-
-
 if ((a.checked == false)&&(c ==''))
 {
 
 
 document.getElementById('e_nombre4').innerHTML='Tilde el checkbox o ingrese altura de la Calle.';
-
-//document.getElementById('e_nombre9').innerHTML='error.';
 
 return false;
 
@@ -120,8 +116,8 @@ return true;
 
 
     
- if ((a.checked == false)&&(b !='')&&(c !='')&&(nombre7 >0)&&(es_nombre.value == '')&&(nombre3.value == '')&&(n==''))
- {
+ if ((a.checked == false)&&(b !='')&&(c !='')&&(nombre7 >0)&&(es_nombre.value == '')&&(nombre3.value == ''))
+{
 
 
 
@@ -135,6 +131,42 @@ return true;
 return false;
 
 }
+
+
+
+function confirmacion_bor(){
+
+
+var r = confirm("Confirmar borrado de Sucursal?");
+if (r == true) {
+    txt = "You pressed OK!";
+    return true;
+} else {
+    txt = "You pressed Cancel!";
+    return false;
+}
+
+}
+
+
+
+function confirmacion_mod(){
+
+
+var r = confirm("Confirmar modificacion de Sucursal?");
+if (r == true) {
+    txt = "You pressed OK!";
+    return true;
+} else {
+    txt = "You pressed Cancel!";
+    return false;
+}
+
+}
+
+
+
+
 
 
 

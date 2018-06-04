@@ -3,6 +3,10 @@
 
 //enviando id_sucursal
 
+session_start();
+
+$_SESSION['URLanterior'] = "";
+
 include_once('conexions.php');
 
 $mysqli=conectar();

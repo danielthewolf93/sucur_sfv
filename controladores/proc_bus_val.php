@@ -30,6 +30,7 @@ if ($result6 == null) {
 	
 		echo "<script>document.getElementById('e_nombre').style='color:red;'</script>";
 
+//echo "<script>alert('Sucursal creada con exito')</script>";
      
      echo "<script>document.getElementById('e2_nombre').value='Nombre no existe';</script>";
      

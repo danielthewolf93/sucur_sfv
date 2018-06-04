@@ -1,5 +1,10 @@
 <?php 
 
+//para ver de donde esta el redireccionamiento
+session_start();
+
+
+
 
 
 include_once('controladores/conexions.php');
@@ -23,15 +28,22 @@ $resultado = $mysqli->query($consulta3);
 //Esto es calles prediccion prueba
 
 
-
+//echo $_SESSION['URLanterior'];
 
 
 
 require 'vistas/vista_suc_tramites.html';
 
 
+if ($_SESSION['URLanterior']==123) {
+	echo "<script>document.getElementById('agreg_suc').style.display = '';</script>";
+}
 
+if ($_SESSION['URLanterior']=="") {
+	echo "<script>document.getElementById('agreg_suc').style.display = 'none';</script>";
+}
 
+//echo "<script>document.getElementById('agreg_suc').style.display = '';</script>";
 
 
 

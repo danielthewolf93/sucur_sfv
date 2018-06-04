@@ -1,9 +1,5 @@
 <?php
 
-session_start();
-
-
-
 date_default_timezone_set('America/Argentina/Catamarca');
 
 
@@ -19,11 +15,13 @@ $calle=$_GET['id'];
 
 $nr_calle=$_GET['calle_alt'];
 
-
+if (isset($_GET['calle_sin_nom'])) {
 
 if (($_GET['calle_alt']=='')||($_GET['calle_sin_nom']=="on")) {
 
     $nr_calle=0;
+
+}
 
 }
 
@@ -88,16 +86,7 @@ $result2 = $sentencia3->fetch();
 if (($result2!=null)&&($sucurs_princ=='si')) {
 
     echo "<script>alert('Sucursal principal ya ingresada.No puede tener mas de una Sucursal Principal.')</script>";
-
-    $_SESSION['URLanterior'] = 123;
-
-   // echo "<script>document.getElementById('agreg_suc').style.display = '';</script>";
-
-    header("refresh:0;../index.php") ;
-
-
-
-
+header("refresh:0;http://localhost/suc/controladores/nueva_alta.php");
     die();
     # code...
 }
@@ -124,8 +113,10 @@ $result6 = $sentencia6->fetch();
 if ($result6==null) {
 
      echo "<script>alert('Error.La calle no existe o esta mal ingresada.Por favor corregir.')</script>";
-     $_SESSION['URLanterior'] = 123;
-    header("refresh:0;../index.php") ;
+
+
+        
+header("refresh:0;http://localhost/suc/controladores/nueva_alta.php");
     die();
 
 }
@@ -159,11 +150,9 @@ $result = $sentencia2->fetch();
 if ($result!=null) {
     
     echo "<script>alert('Sucursal ya ingresada.Por favor ingrese otra.')</script>";
-
-     $_SESSION['URLanterior'] = 123;
     
         
-    header("refresh:0;../index.php") ;
+header("refresh:0;http://localhost/suc/controladores/nueva_alta.php");
     die();
     //exit();
     
@@ -245,11 +234,11 @@ $sentenciamov->execute();
 
 echo "<script>alert('Sucursal creada con exito')</script>";
 
-$_SESSION['URLanterior'] = "";
 
 
 
-    header('Location:../index.php') ;
+
+header("refresh:0;http://localhost/suc/controladores/nueva_alta.php");
 
 
 
