@@ -174,16 +174,26 @@ if ($result!=null) {
 //--------------------------------------------------------
 
 
+$consultaprinc = "SELECT * FROM rm_sucursales WHERE cuit_contr=?";
 
+$sentenciaprinc = $mysqli->prepare($consultaprinc);
 
-//Si no tiene ningun error creamos la sucursal.
+$sentenciaprinc->bind_param("s", $valprinc);
 
+$valprinc = $cuit_cont;
 
-$consulta = "INSERT INTO rm_sucursales (id_sucursal,cuit_contr,nro_inscripc,calle,nro_calle,barrio,fecha_generac,sucurs_princip) VALUES (null,?,?,?,?,?,?,?)";
+$sentenciaprinc->execute();
+$sentenciaprinc->store_result();
+
+$resultprinc = $sentenciaprinc->fetch();
+
+if ($resultprinc==null) {
+    
+$consulta = "INSERT INTO rm_sucursales (id_sucursal,cuit_contr,nro_inscripc,calle,nro_calle,barrio,fecha_generac,sucurs_princip,sucurs_notif) VALUES (null,?,?,?,?,?,?,?,?)";
 
 $sentencia = $mysqli->prepare($consulta);
 
-$sentencia->bind_param("sssssss", $val1, $val2, $val3, $val4, $val5, $val6, $val7);
+$sentencia->bind_param("ssssssss", $val1, $val2, $val3, $val4, $val5, $val6, $val7, $val8);
 
 $val1 = $cuit_cont;
 $val2 = $nr_insc;
@@ -192,7 +202,7 @@ $val4 = $nr_calle;
 $val5 = $barrio;
 $val6 = $fecha;
 $val7 = $sucurs_princ;
-
+$val8 = "si";
 
 /* Ejecutar la sentencia */
 $sentencia->execute();
@@ -251,8 +261,94 @@ $_SESSION['URLanterior'] = "";
 
     header('Location:../index.php') ;
 
+}
+
+else{ 
+
+
+//Si no tiene ningun error creamos la sucursal.
+$actividas = $_GET["actividad_1"];
+
+//$array = explode(',',$actividas);
+
+$array2 =json_encode($actividas);
+
+$consulta = "INSERT INTO rm_sucursales (id_sucursal,cuit_contr,nro_inscripc,calle,nro_calle,barrio,fecha_generac,sucurs_princip,sucurs_notif,actividades) VALUES (null,?,?,?,?,?,?,?,?,?)";
+
+$sentencia = $mysqli->prepare($consulta);
+
+$sentencia->bind_param("sssssssss", $val1, $val2, $val3, $val4, $val5, $val6, $val7, $val8, $val9);
+
+$val1 = $cuit_cont;
+$val2 = $nr_insc;
+$val3 = $calle;
+$val4 = $nr_calle;
+$val5 = $barrio;
+$val6 = $fecha;
+$val7 = $sucurs_princ;
+$val8 = "no";
+$val9 = $array2;
+
+
+/* Ejecutar la sentencia */
+$sentencia->execute();
 
 
 
+
+//Alta sucursal-Mov-----------------------------------------------------------//
+
+
+//
+
+$consulta3 = "SELECT * FROM rm_sucursales WHERE calle=$calle AND nro_calle=$nr_calle ";
+
+
+
+//Funciona sola
+$resultadoz = $mysqli->query($consulta3);
+
+
+
+
+foreach ($resultadoz as $resz ) {
+
+  $id_sucu=$resz['id_sucursal'];
+
+}
+
+
+
+
+//-----------------------------------------------------------------------------//
+
+
+
+$consultamov = "INSERT INTO rm_sucursales_mov (id_sucursal_mov,tramite_tipo,fecha_tramite,cuit_contrib,id_sucursal) VALUES (null,?,?,?,?)";
+
+$sentenciamov = $mysqli->prepare($consultamov);
+
+$sentenciamov->bind_param("ssss", $val15, $val25, $val35, $val45);
+
+$val15 = $tramite_tipo;
+$val25 = $fecha;
+$val35 = $cuit_cont;
+$val45 = $id_sucu;
+
+$sentenciamov->execute();
+
+
+
+echo "<script>alert('Sucursal creada con exito.')</script>";
+
+$_SESSION['URLanterior'] = "";
+
+
+
+    header('Location:../index.php') ;
+
+
+
+}
 
 ?>

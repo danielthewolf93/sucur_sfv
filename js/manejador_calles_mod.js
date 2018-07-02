@@ -34,11 +34,32 @@ var n = document.getElementById('e_nombre').value;
 
 
 
+
+
 var nombre = $('#nombre').val();//obtener el nombre y/o termino de busqeuda
 
 
 
 var es_nombre = document.getElementById("e2_nombre");
+
+
+
+var ok = 0;
+
+var ckbox = document.getElementsByName('actividad_1[]');
+
+
+    for (var i=0; i < ckbox.length; i++){
+        if(ckbox[i].checked == true){
+        ok = ok+1;
+        }
+    }
+    
+    if(ok == 0){
+    return false;
+    }
+
+
 
 //var esnombre = $('#e2_nombre').val();
 

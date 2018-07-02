@@ -34,14 +34,21 @@ $resultado = $mysqli->query($consulta3);
 
 require 'vistas/vista_suc_tramites.html';
 
+if (isset($_SESSION['URLanterior'])) {
+	
 
-if ($_SESSION['URLanterior']==123) {
+	if ($_SESSION['URLanterior']==123) {
 	echo "<script>document.getElementById('agreg_suc').style.display = '';</script>";
-}
 
-if ($_SESSION['URLanterior']=="") {
+	if ($_SESSION['URLanterior']=="") {
 	echo "<script>document.getElementById('agreg_suc').style.display = 'none';</script>";
 }
+
+}
+
+
+}
+
 
 //echo "<script>document.getElementById('agreg_suc').style.display = '';</script>";
 

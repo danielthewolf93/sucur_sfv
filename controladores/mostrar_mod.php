@@ -3,6 +3,13 @@
 
 session_start();
 
+
+$_SESSION['URLactu'] = $_SERVER['REQUEST_URI'];
+
+
+//$_SESSION['URLactu'] = "$_SERVER["REQUEST_URI"]";
+
+
 $_SESSION['URLanterior'] = "";
 
 include_once('conexions.php');
@@ -25,10 +32,10 @@ foreach ($resultado as $result ) {
 	$calle=$result['calle'];
 	$altura=$result['nro_calle'];
 	$sucurs_princ=$result['sucurs_princip'];
-
+	
 	$nombcalle=$result['nombre'];
 
-	# code...
+
 }
 
 

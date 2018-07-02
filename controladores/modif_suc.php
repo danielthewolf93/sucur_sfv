@@ -6,6 +6,8 @@ session_start();
 
 $_SESSION['URLanterior'] = "";
 
+$rutamod = $_SESSION['URLactu'];
+
 include_once('conexions.php');
 
 
@@ -94,7 +96,7 @@ if ($result!=null) {
     
 
 
-header("refresh:0;http://localhost/suc/controladores/mostrar_mod.php?id='$id'");
+header("refresh:0;$rutamod");
     die();
     //exit();
     
@@ -131,7 +133,7 @@ if ($result34!=null&&($suc_princ=='si')) {
     echo "<script>alert('Error.Ya existe una sucursal principal para $cuit')</script>";
     
         
-header("refresh:0;http://localhost/suc/controladores/mostrar_mod.php?id='$id'");
+header("refresh:0;$rutamod");
     die();
     //exit();
     
@@ -158,8 +160,8 @@ $result6 = $sentencia6->fetch();
 
 if ($result6==null) {
 
-     echo "<script>alert('Error.La calle no existe o esta mal ingresada.Por favor corregir.')</script>";
-header("refresh:0;http://localhost/suc/controladores/mostrar_mod.php?id='$id'");
+    echo "<script>alert('Error.La calle no existe o esta mal ingresada.Por favor corregir.')</script>";
+    header("refresh:0;$rutamod");
     die();
 
 }
@@ -169,20 +171,28 @@ header("refresh:0;http://localhost/suc/controladores/mostrar_mod.php?id='$id'");
 
 //Si ingresa los mismos datos de otra sucursal ya cargada.controla.
 
+$actividas = $_GET["actividad_1"];
 
-$consulta4 = "UPDATE  rm_sucursales SET calle =?, nro_calle =?, sucurs_princip =?  WHERE id_sucursal=? ";
+//$array = explode(',',$actividas);
+
+$array2 =json_encode($actividas);
+
+
+$consulta4 = "UPDATE  rm_sucursales SET calle =?, nro_calle =?, sucurs_princip =?, actividades =?  WHERE id_sucursal=? ";
 
 
 $sentencia33 = $mysqli->prepare($consulta4);
 
-$sentencia33->bind_param("ssss", $val5, $val6, $val7, $val8);
+$sentencia33->bind_param("sssss", $val5, $val6, $val7, $val9, $val8);
 
 
 
 $val5 = $calle;
 $val6 = $nro_calle;
 $val7 = $suc_princ;
+$val9 = $array2;
 $val8 = $id;
+
 
 
 
@@ -211,7 +221,7 @@ $sentenciamov->execute();
 echo "<script>alert('Sucursal Modificada.')</script>";
 
 
-header("refresh:0;http://localhost/suc/controladores/mostrar_mod.php?id='$id'");
+header("refresh:0;../index.php");
 
 //header("refresh:0;../index.php") ;
 /*

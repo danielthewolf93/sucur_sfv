@@ -91,22 +91,58 @@ $(document).ready(function(){
 
 			<br>
 			<label for="calle_alt">Calle S/N</label>
-			<input type="checkbox" name="calle_sin_nom" id="calle_sin_nom"  >
+			<input type="checkbox" name="calle_sin_nom" id="calle_sin_nom" >
 			<input type="hidden" name="id_calle_sin_nom" id="id_calle_sin_nom" >
 									
 			<div id="e_nombre4" style="color:red;"></div>
+				 
+                  
 
-			<label for="sucurs_princ">Sucursal Principal</label>
-			<select name="sucurs_princ" id="sucurs_princ" required>
+				
+				
 
-				<option value="si">Si</option>
-				<option value="no" selected>No</option>
-			</select>
+							<label for="actividades"></label>
 
-									<button id="alta1" class="btn btn-success" type="submit">Modificar</button>
-		<a class="btn btn-warning" href="../index.php" >Cancelar</a>
+                                <div class="selector-activ">
+                                   
+                                    <script type="text/javascript">
+                                        $(document).ready(function() {
+                                        	var id = $('#id_sucurs').val();
+                                            $.ajax({
+                                                    type: "POST",
+                                                    url: "../controladores/lista_actividad_mod.php",
+                                                    data: {id:id},
+                                                    success: function(response)
+                                                    {
+                                                        $('.selector-activ').html(response).fadeIn();
+                                                    }
+                                            });
+                        
+                                        });
+                                    </script>
+                                </div>
 
-</form>
+									<br>
+									<label for="sucurs_princ">Sucursal Principal</label>
+									<select name="sucurs_princ" id="sucurs_princ" required>
+
+										<option value="si">Si</option>
+										<option value="no" selected>No</option>
+									</select>
+
+								<button id="alta1" class="btn btn-success" type="submit">Modificar</button>
+								<a class="btn btn-warning" href="../index.php" >Cancelar</a>
+
+					</form>
+
+
+
+
+             </div>
+
+
+
+			
 
 
 

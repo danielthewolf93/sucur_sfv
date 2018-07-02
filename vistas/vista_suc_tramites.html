@@ -55,10 +55,6 @@ $(document).ready(function(){
 
 
 
-
-
-
-
 <form name="datos_bas" id="datos_bas">
 	
 
@@ -67,6 +63,8 @@ $(document).ready(function(){
 	<input type="number" name="cuit" id="cuit" value="2037462532" placeholder="20374625323" disabled>
 	<label for="nro_ins">Nro Inscripcion</label>
 	<input type="number" name="nro_ins" id="nro_ins"  value="2037462532" disabled>
+  <input type="number" name="nomeng" id="nomeng"  value="000000016402" >
+
 
 </form>
 
@@ -78,8 +76,10 @@ $(document).ready(function(){
                       <th>Calle</th>
                       <th>Nro Calle</th>
                       <th>Sucurs Tipo</th>
+                      <th>Actividades</th>
                       <th></th>
                       <th></th>
+                       <th></th>
                     </tr>
                     <?php foreach ($resultado as $result ) { ?>
                     <tr>
@@ -99,12 +99,23 @@ $(document).ready(function(){
                      <?php	}	?>
 
                       <td><?php echo $result['sucurs_princip']; ?></td>
+                      <td><?php echo $result['actividades']; ?></td>
 
 
                       
                        <td><a class="btn btn-warning" href="controladores/mostrar_mod.php?id=<?php echo $result['id_sucursal']; ?>" >Modificar</a>
                       	
                       </td>
+
+                       <?php if($result['sucurs_notif']=="no"): ?>
+                       <td><a onClick="return confirmacion_mod();" class="btn btn-warning" href="controladores/mostrar_mod_notif.php?id=<?php echo $result['id_sucursal']; ?>" >Suc. de Notif.</a>
+                       </td>
+                       <?php endif; ?>
+
+                       <?php if($result['sucurs_notif']=="si"): ?>
+                       <td><span class="alert-success">Sucursal Notificacion</span></td>
+                      <?php endif; ?>
+
 
 
                       <td><a class="btn btn-danger" href="controladores/borrar_suc.php?id=<?php echo $result['id_sucursal']; ?>&cuit=<?php echo $result['cuit_contr'] ; ?>" onClick="return confirmacion_bor();">Borrar</a>
@@ -114,12 +125,6 @@ $(document).ready(function(){
                     </tr>
                     <?php } ?>
 
-
-
-                    
-
-
-
                     <?php if ($resultado != null) {?>
 
                     <td><button value="alta" id="bot_alta"  class="btn btn-success">Agregar Suc</button></td>
@@ -127,6 +132,8 @@ $(document).ready(function(){
                    <!-- <td><a href="controladores/nueva_alta.php" class="btn btn-success">Agregar Pag.New</a></td> -->
                 	
                 	<?php   }  ?> 
+
+
           
 </table>
 
@@ -171,6 +178,29 @@ $(document).ready(function(){
 									<input type="hidden" name="id_calle_sin_nom" id="id_calle_sin_nom" >
 									
 									<div id="e_nombre4" style="color:red;"></div>
+                  
+                
+                  <div class="form-group">
+                                <label for="actividades"></label>
+
+                                <div class="selector-activ">
+                                   
+                                    <script type="text/javascript">
+                                        $(document).ready(function() {
+                                            $.ajax({
+                                                    type: "POST",
+                                                    url: "controladores/lista_actividad.php",
+                                                    success: function(response)
+                                                    {
+                                                        $('.selector-activ').html(response).fadeIn();
+                                                    }
+                                            });
+                        
+                                        });
+                                    </script>
+                                </div>
+                                
+                         </div>  
 
 
 									<br>
@@ -180,12 +210,7 @@ $(document).ready(function(){
 										<option value="no" selected>No</option>
 									</select>
 
-
-									<button id="alta1" type="submit">Agregar</button>
-
-
-
-
+                  <button id="alta1" type="submit">Agregar</button>
 
 	</form>
 
@@ -200,12 +225,9 @@ $(document).ready(function(){
 
 <script type="text/javascript" src="js/contr_sucurs.js"></script>
 
-<script type="text/javascript" src="js/manejador_calles.js"></script>
-
 <script type="text/javascript" src="js/jquery_3_3_1_min.js"></script>
 
-<script type="text/javascript" src="js/busqueda_calles.js"></script>
-
+<script type="text/javascript" src="js/manejador_calles.js"></script>
 
 <script src="js/jquery-1.11.0.min.js"></script>
 
@@ -213,8 +235,8 @@ $(document).ready(function(){
 
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
 
 
 </body>

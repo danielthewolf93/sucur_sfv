@@ -29,6 +29,20 @@ var nombre2 =$('#lista').val();
 
 var nombre7 = document.getElementById('id').value;
 
+var ok = 0;
+
+var ckbox = document.getElementsByName('actividad_1[]');
+
+
+    for (var i=0; i < ckbox.length; i++){
+        if(ckbox[i].checked == true){
+        ok = ok+1;
+        }
+    }
+    
+    if(ok == 0){
+    return false;
+    }
 
 
 
@@ -153,7 +167,7 @@ if (r == true) {
 function confirmacion_mod(){
 
 
-var r = confirm("Confirmar modificacion de Sucursal?");
+var r = confirm("Confirmar modificacion de Sucursal de notificacion");
 if (r == true) {
     txt = "You pressed OK!";
     return true;
